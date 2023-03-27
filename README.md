@@ -24,6 +24,8 @@
 
 
 ## 設計書
+実装機能リストのURL
+https://docs.google.com/spreadsheets/d/1vj94GBinTeouIaLU2rdf7LQ-wuqJriCL_cAyk7wcYzA/edit#gid=885378170
 
 
 ## 開発環境
