@@ -12,5 +12,9 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
 }
 
+scope module: :member do #会員側のルート
+  root to: 'homes#top'
+end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
