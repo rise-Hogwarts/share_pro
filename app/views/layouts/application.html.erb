@@ -13,20 +13,47 @@
   <body>
     <div class="container-fluid bg-warning">
       <header>
-        <div class="row">タンパク質を求める方に向けたレシピ投稿サイト</div>
+        <div class="row ml-3 pt-1">タンパク質を求める方に向けたレシピ投稿サイト</div>
         <div class="row">
           <div class="col-3">
             <h1 class="ml-5"><i class="fas fa-utensils"></i><u class="mx-3">share-pro</u><i class="fas fa-utensils"></i></h1>
           </div>
           <div class="col">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+            <ul class="navbar-nav ml-auto">
             <% if member_signed_in? %>
             <li class="nav-item">
-              <%= link_to "ホーム画面", root_path, class:'btn btn-light' %>
+              <%= link_to "ホーム画面", root_path, class:'btn btn-secondary' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class:'btn btn-light' %>
+              <%= link_to "使い方例", explanation_path, class:'btn btn-secondary' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "レシピ一覧", recipes_path, class:'btn btn-secondary' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class:'btn btn-secondary' %>
+            </li>
+            <% elsif admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "会員一覧", admin_members_path, class:'btn btn-secondary' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "レシピ一覧", admin_recipes_path, class:'btn btn-secondary' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ジャンル追加", admin_genres_path, class:'btn btn-secondary' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:'btn btn-secondary' %>
+            </li>
+            <% else %>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_member_session_path, class:'btn btn-secondary' %>
             </li>
             <% end %>
+            </ul>
+            </nav>
           </div>
           </div>
       </header>
