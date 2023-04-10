@@ -1,0 +1,27 @@
+<div class="container">
+<h1>レシピ投稿ページ</h1>
+
+<%= form_with model: @recipe, url: recipes_path do |f| %>
+  <%= f.label :レシピ画像 %>
+  <%= f.file_field :image, accept: "image/*" %>
+
+  <%= f.label :レシピ名 %>
+  <%= f.text_field :name %>
+
+  <%= f.label :ジャンル選択 %>
+  <%= f.select :genre_id, @genres.map{ |f| [f.name, f.id]}, { include_blank: '--選択してください--'}, class:"w-75 p-1 ml-5" %>
+
+  <%= f.label :材料 %>
+  <%= f.text_area :ingredients %>
+
+  <%= f.label :作り方 %>
+  <%= f.text_area :explanation %>
+
+  <%= f.label :たんぱく質量 %>
+  <%= f.text_field :protein %>
+  g
+
+  <%= f.submit "投稿する", class:'btn btn-success' %>
+
+<% end %>
+</div>

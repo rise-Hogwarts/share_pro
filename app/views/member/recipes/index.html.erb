@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <h3 class="mx-auto mt-4">レシピ一覧</h3>
+    <!--<%# @recipes.each do |recipe| %>-->
+    <!--<%#= recipe.name %>-->
+    <!--<%# end %>-->
+  </div>
+  <!--<div class="row">-->
+    <!--<div class="col-12">-->
+    <!--<div class="d-flex flex-wrap">-->
+      <% @recipes.each do |recipe| %>
+        <!--<div>-->
+          <%= image_tag recipe.image, size: "220x150" %>
+          <%= "＜#{recipe.name}＞" %><br>
+          <%= "たんぱく質 '#{recipe.protein}g'" %><br>
+          <%= "ユーザ名 '#{recipe.member.name}'" %>
+        <!--</div>-->
+      <% end %>
+    <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <h3>ddd</h3>
+</div>
+

@@ -15,7 +15,7 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
 scope module: :member do #会員側のルート
   root to: 'homes#top'
   get '/explanation' => 'homes#explanation'
-  resources :recipes, only: [:index, :show, :new]
+  resources :recipes, only: [:index, :show, :new, :create]
 end
 
 namespace :admin do
