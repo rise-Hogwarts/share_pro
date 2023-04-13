@@ -2,9 +2,16 @@ class Member::RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    @genres = Genre.all
+    if params[:genre_id].present?
+      #presentメソッドでparams[:genre_id]に値が含まれているか確認 => trueの場合下記を実行
+      @genre = Genre.find(params[:genre_id])
+      @recipes = @genre.recipes
+    end
   end
 
   def show
+    @recipe = Recipe.find(params[:id])
   end
 
   def new
@@ -23,7 +30,7 @@ class Member::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:member_id, :image, :name, :jenre_id, :explanation, :ingredients, :protein)
+    params.require(:recipe).permit(:member_id, :image, :name, :genre_id, :explanation, :ingredients, :protein)
   end
 
 end

@@ -1,2 +1,5 @@
-class Member::JenresController < ApplicationController
+class Member::GenresController < ApplicationController
+  def show
+    
+  end
 end
