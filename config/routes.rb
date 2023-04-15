@@ -20,7 +20,7 @@ end
 
 namespace :admin do
   resources :recipes, only: [:index, :show]
-  resources :members, only: [:index, :show]
+  resources :members, only: [:index, :show, :update]
   resources :genres, only: [:index, :create, :destroy]
 end
 

@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row">
+
+  </div>
+
+<%= form_with model: @member, url: admin_member_path(@member.id), method: :patch do |f| %>
+
+
+
+    <div class="row mt-2">
+        <%= form_with(model: @member) do |form| %>
+      <div class="col-2">
+         <%= form.label :会員ステータス %>
+      </div>
+      <div class="col-1">
+        <%= form.radio_button :is_deleted, false %>
+        <%= form.label :is_deleted, '有効', value: false %>
+      </div>
+      <div class="col">
+        <%= form.radio_button :is_deleted, true %>
+        <%= form.label :is_deleted, '退会', value: true %>
+      </div>
+        <% end %>
+    </div>
+
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col">
+        <%= f.submit "変更を保存", class:"btn btn-success btn-lg mt-4" %>
+      </div>
+    </div>
+
+  </div>
+<% end %>
