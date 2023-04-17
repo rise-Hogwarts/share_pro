@@ -1,26 +1,22 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="container">
 
-  </div>
 
 <%= form_with model: @member, url: admin_member_path(@member.id), method: :patch do |f| %>
 
-
-
     <div class="row mt-2">
-        <%= form_with(model: @member) do |form| %>
+        <%#= form_with(model: @member, local: true) do |form| %>
       <div class="col-2">
-         <%= form.label :会員ステータス %>
+         <%= f.label :会員ステータス %>
       </div>
       <div class="col-1">
-        <%= form.radio_button :is_deleted, false %>
-        <%= form.label :is_deleted, '有効', value: false %>
+        <%= f.radio_button :is_deleted, false %>
+        <%= f.label :is_deleted, '有効', value: false %>
       </div>
       <div class="col">
-        <%= form.radio_button :is_deleted, true %>
-        <%= form.label :is_deleted, '退会', value: true %>
+        <%= f.radio_button :is_deleted, true %>
+        <%= f.label :is_deleted, '退会', value: true %>
       </div>
-        <% end %>
+        <%# end %>
     </div>
 
     <div class="row">
