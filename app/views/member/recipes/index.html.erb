@@ -1,16 +1,29 @@
-<div class="container-fluid">
+<div class="container-fluid", style="background-color: cornsilk;">
+
+
   <div class="row">
-    <div class="col-3"></div>
-    <h2 class="my-2 font-weight-bold text-info py-4 px-4">レ シ ピ 一 覧</h2>
-
-  <div class="col">
-
-    <%= link_to '新しい順', recipes_path(latest: "true"), class:"btn btn-secondary" %>
-    <%= link_to '古い順', recipes_path(old: "true") %>
-    <%= link_to '人気順', recipes_path(star_count: "true") %>
-    <%= link_to 'たんぱく質量順（多）', recipes_path(many_protein: "true") %>
-    <%= link_to 'たんぱく質良順（少）', recipes_path(few_protein: "true") %>
+  <!--<div class="col-5"></div>-->
+    <h2 class="mx-auto font-weight-bold px-5 py-2 my-4 rounded border border-warning" style="background-color: white;">レ シ ピ</h2>
   </div>
+
+  <div class="row">
+  <div class="col-5"></div>
+  <div class="col-5 ml-5">
+  <table class="table table-bordered table-sm table-active">
+    <tbody>
+      <tr>
+        <td style="background-color: lightcyan;"><%= link_to '新しい順', recipes_path(latest: "true"), class:"text-dark" %></td>
+        <td style="background-color: lightcyan;"><%= link_to '古い順', recipes_path(old: "true"), class:"text-dark" %></td>
+        <td style="background-color: lightcyan;"><%= link_to '人気順', recipes_path(star_count: "true"), class:"text-dark" %></td>
+      <!--</tr>-->
+      <!--<tr>-->
+        <td style="background-color: lightcyan;"><%= link_to 'たんぱく質量 <多い順>', recipes_path(many_protein: "true"), class:"text-dark" %></td>
+        <td style="background-color: lightcyan;"><%= link_to 'たんぱく質量 <少ない順>', recipes_path(few_protein: "true"), class:"text-dark" %></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
   </div>
   <div class="row">
     <div class="col-2 ml-2">
@@ -47,7 +60,7 @@
 
       <div class="mb-4 pt-2 mx-2 border border-success" style="background-color: wheat;">
         <%= link_to recipe_path(recipe.id) do %>
-         <div class="px-5 ml-2">
+         <div class="text-center">
           <%= image_tag recipe.image, size: "150x80" %>
          </div>
 
