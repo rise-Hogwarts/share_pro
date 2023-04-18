@@ -50,22 +50,6 @@
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:'btn btn-secondary' %>
             </li>
-            <% elsif user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "ホーム画面", root_path, class:'btn btn-secondary' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "使い方例", explanation_path, class:'btn btn-secondary' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "レシピ投稿", new_recipe_path, class:'btn btn-secondary' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "レシピ一覧", recipes_path, class:'btn btn-secondary' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:'btn btn-secondary' %>
-            </li>
             <% else %>
             <li class="nav-item">
               <%= link_to "ログイン", new_member_session_path, class:'btn btn-secondary' %>

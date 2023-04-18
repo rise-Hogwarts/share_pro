@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
 
-devise_for :users
-  post '/guest_sign_in', to: 'homes#guest'
+# devise_for :users
+# devise_for :members
+  # post '/guest_sign_in', to: 'homes#guest'
 
 # URL /customers/sign_in ...
 devise_for :members,skip: [:passwords], controllers: {
@@ -10,6 +11,9 @@ devise_for :members,skip: [:passwords], controllers: {
   sessions: 'member/sessions'
 
 }
+devise_scope :members do
+  post '/guest_sign_in', to: 'homes#guest'
+end
 
 # 管理者用
 # URL /admin/sign_in ...
