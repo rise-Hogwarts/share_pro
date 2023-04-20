@@ -1,35 +1,62 @@
-<div class="container-fluid">
+<div class="container-fluid pt-5", style="background-color: lightgoldenrodyellow;">
 
-
-  <div class="row mt-3 ml-5">
-    <div class="col-5 mr-4">      <!--左上 レシピ情報-->
-      <table class="table table-bordered">
-        <tbody>
-          <tr>
-            <td class="col-4 table-active"><h4 class="font-weight-bold">レシピ名</h4></td><td class="col-8"><%= @recipe.name %></td>
-          </tr>
-          <tr>
-            <td class="col-4 table-active"><h4 class="font-weight-bold">ジャンル</h4></td><td class="col-8"><%= @recipe.genre.name %></td>
-          </tr>
-          <tr>
-            <td class="col-4 table-active"><h4 class="font-weight-bold">たんぱく質量</h4></td><td class="col-8"><%= "#{@recipe.protein}グラム" %></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-6 border border-dark mb-3 pt-2">    <!--右上 材料-->
-      <u><h3>材料</h3></u>
-      <h5><%= safe_join(@recipe.ingredients.split("\n"),tag(:br)) %></h5></div>
+  <div class="row">
+    <h3 class="font-weight-bold mx-auto rounded-pill px-5 py-4 mb-5", style="background-color: #fcd575;">
+      <%= "~ #{@recipe.name}" %>
+      のレシピ ~
+    </h3>
   </div>
 
 
   <div class="row ml-5">
-    <div class="col-5 mr-4">    <!--左下 レシピ画像-->
-      <%= image_tag @recipe.image, size: "557x490", class:'border border-warning' %>
-    </div>
-    <div class="col-6 border border-warning pt-2">    <!--右下 作り方-->
-      <h3><u>作り方</u></h3>
+    <div class="col-6 mr-4">    <!--右上 材料-->
+      <div class="border border-dark py-3 pl-3 mb-5", style="background-color: #aacf53;"><u><h3>材料</h3></u>
+        <h5><%= safe_join(@recipe.ingredients.split("\n"),tag(:br)) %></h5>
+      </div>
+      <div class="border border-dark py-3 pl-3", style="background-color: #c7dc68;"><u><h3>作り方</h3></u>
       <%= safe_join(@recipe.explanation.split("\n"),tag(:br)) %>
+      </div>
+    </div>
+    <div class="col-5 ml-3">    <!--左下 レシピ画像-->
+      <%= image_tag @recipe.image, size: "550x400", class:'border border-dark mb-4' %>
+
+      <% if @recipe.good_by?(current_member) %>
+      <%= link_to recipe_goods_path(@recipe), method: :delete do %>
+      <h4 class="mb-4 px-4 py-2 btn btn-warning btn-lg">
+        <i class="fas fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
+      </h4>
+      <% end %>
+      <% else %>
+      <%= link_to recipe_goods_path(@recipe), method: :post do %>
+      <h4 class="mb-4 px-4 py-2 btn btn-lg btn-light border border-dark">
+        <i class="far fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
+      </h4>
+      <% end %>
+      <% end %>
+
+      <table class="table table-lg table-dark text-light mb-3">
+        <tbody>
+          <tr>
+            <td class="col-4", style="background-color: #404040;"><h5 class="font-weight-bold mt-2">　レシピ名</h5></td><td class="col-8 align-middle", style="background-color: #606060;"><%= @recipe.name %></td>
+          </tr>
+          <tr>
+            <td class="col-4", style="background-color: #404040;"><h5 class="font-weight-bold mt-2">　ジャンル</h5></td><td class="col-8 align-middle", style="background-color: #606060;"><%= @recipe.genre.name %></td>
+          </tr>
+          <tr>
+            <td class="col-4", style="background-color: #404040;"><h5 class="font-weight-bold mt-2">　たんぱく質量</h5></td><td class="col-8 align-middle", style="background-color: #606060;"><%= "#{@recipe.protein}グラム" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-sm table-bordered">
+        <tbody>
+          <tr>
+            <td class="col-4 table-active text-center"><p>ユーザ名</p></td><td class="col-8 align-middle"><%= @recipe.member.name %></td>
+          </tr>
+          <tr>
+            <td class="col-4 table-active text-center"><p>投稿日</p></td><td class="col-8 align-middle"><%= @recipe.created_at.strftime('%Y / %m / %d') %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
