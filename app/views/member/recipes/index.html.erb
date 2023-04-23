@@ -1,24 +1,33 @@
-<div class="container-fluid", style="background-color: cornsilk;">
+<div class="container-fluid">
 
 
-  <div class="row">
-  <!--<div class="col-5"></div>-->
-    <h2 class="mx-auto font-weight-bold px-5 py-2 my-4 rounded border border-warning" style="background-color: white;">レ シ ピ</h2>
+  <div class="row", style="background-color: #fff3b8;">
+    <h1 class="mx-auto font-weight-bold px-5 py-3 mt-5">〜 レ シ ピ 情 報 〜</h1s>
+  </div>
+  <div class="row", style="background-color: #fff3b8;">
+    <h4 class="mt-4 pb-5 mx-auto"><u>レシピをクリックすると詳細ページへ移動できます</u></h4>
   </div>
 
-  <div class="row">
-  <div class="col-5"></div>
-  <div class="col-5 ml-5">
-  <table class="table table-bordered table-sm table-active">
+  <div class="row pt-5">
+  <div class="col-7">   <!--検索フォーム-->
+    <%= form_tag(recipes_path, :method => "get") do %>
+      <%= text_field_tag :search %>
+      <%= submit_tag "キーワード検索", :name => nil, class:"btn btn-success btn-sm px-3 mb-1 font-weight-bold" %>
+    <% end %>
+  </div>
+  <div class="col-5">
+  <table class="table table-bordered table-sm text-center">
     <tbody>
       <tr>
-        <td style="background-color: lightcyan;"><%= link_to '新しい順', recipes_path(latest: "true"), class:"text-dark" %></td>
-        <td style="background-color: lightcyan;"><%= link_to '古い順', recipes_path(old: "true"), class:"text-dark" %></td>
-        <td style="background-color: lightcyan;"><%= link_to '人気順', recipes_path(star_count: "true"), class:"text-dark" %></td>
-      <!--</tr>-->
-      <!--<tr>-->
-        <td style="background-color: lightcyan;"><%= link_to 'たんぱく質量 <多い順>', recipes_path(many_protein: "true"), class:"text-dark" %></td>
-        <td style="background-color: lightcyan;"><%= link_to 'たんぱく質量 <少ない順>', recipes_path(few_protein: "true"), class:"text-dark" %></td>
+        <td class="col-4 pl-3 bg-warning font-weight-bold"><i class="fas fa-exchange-alt"></i> 並び替え</td>
+        <!--<td class="col-4", style="background-color: lightcyan;"><%#= link_to '・人気順', recipes_path(star_count: "true"), class:"text-primary font-weight-bold" %></td>-->
+        <td class="col-4", style="background-color: lightcyan;"><%= link_to '・ 新しい順', recipes_path(latest: "true"), class:"text-primary font-weight-bold" %></td>
+        <td style="background-color: lightcyan;"><%= link_to '・古い順', recipes_path(old: "true"), class:"text-primary font-weight-bold" %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td style="background-color: lightcyan;"><%= link_to '・たんぱく質 -降順-', recipes_path(many_protein: "true"), class:"text-primary font-weight-bold" %></td>
+        <td style="background-color: lightcyan;"><%= link_to '・たんぱく質 -昇順-', recipes_path(few_protein: "true"), class:"text-primary font-weight-bold" %></td>
       </tr>
     </tbody>
   </table>
@@ -26,8 +35,8 @@
 
   </div>
   <div class="row">
-    <div class="col-2 ml-2">
-      <table class="table table-hover table-bordered">
+    <div class="col-2">
+      <table class="table table-bordered table-striped">
         <thead>
           <tr>
             <th class="text-center bg-warning">レシピ検索(ジャンル)</th>
@@ -52,23 +61,23 @@
 
 
     <!--<div class="col-9">-->
-    <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap col-10">
 
       <% @recipes.each do |recipe| %>
         <!--<div>-->
 
 
-      <div class="mb-4 pt-2 mx-2 border border-success" style="background-color: wheat;">
+      <div class="mb-5 pt-4 border border-dark col-3" style="background-color: white;">
         <%= link_to recipe_path(recipe.id) do %>
-         <div class="text-center">
-          <%= image_tag recipe.image, size: "150x80" %>
+         <div class="text-center border border-secondary">
+          <%= image_tag recipe.image, size: "260x150" %>
          </div>
 
 
 
         <!--<div class="mr-4">-->
         <div class="col">
-          <table class="table table-sm table-striped text-nowrap mt-2">
+          <table class="table table-sm table-responsive text-nowrap mt-2">
             <tbody>
               <tr><td>レシピ名</td><td class="overflow-x-auto"><u><%= recipe.name %></u></td></tr>
               <tr><td>たんぱく質量</td><td><u><%= "#{recipe.protein}グラム" %></u></td></tr>

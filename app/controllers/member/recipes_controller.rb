@@ -5,14 +5,12 @@ class Member::RecipesController < ApplicationController
      @recipes = Recipe.latest
     elsif params[:old]
      @recipes = Recipe.old
-    elsif params[:star_count]
-     @recipes = Recipe.star_count
     elsif params[:many_protein]
      @recipes = Recipe.many_protein
     elsif params[:few_protein]
      @recipes = Recipe.few_protein
     else
-     @recipes = Recipe.all
+     @recipes = Recipe.all.search(params[:search])
     end
 
     @genres = Genre.all
