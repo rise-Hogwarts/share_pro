@@ -9,30 +9,9 @@
 
 
   <div class="row ml-5">
-    <div class="col-6 mr-4">    <!--右上 材料-->
-      <div class="border border-dark py-3 pl-3 mb-5", style="background-color: #aacf53;"><u><h3>材料</h3></u>
-        <h5><%= safe_join(@recipe.ingredients.split("\n"),tag(:br)) %></h5>
-      </div>
-      <div class="border border-dark py-3 pl-3", style="background-color: #c7dc68;"><u><h3>作り方</h3></u>
-      <%= safe_join(@recipe.explanation.split("\n"),tag(:br)) %>
-      </div>
-    </div>
+
     <div class="col-5 ml-3">    <!--左下 レシピ画像-->
       <%= image_tag @recipe.image, size: "550x400", class:'border border-dark mb-4' %>
-
-      <% if @recipe.good_by?(current_member) %>
-      <%= link_to recipe_goods_path(@recipe), method: :delete do %>
-      <h4 class="mb-4 px-4 py-2 btn btn-warning btn-lg">
-        <i class="fas fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
-      </h4>
-      <% end %>
-      <% else %>
-      <%= link_to recipe_goods_path(@recipe), method: :post do %>
-      <h4 class="mb-4 px-4 py-2 btn btn-lg btn-light border border-dark">
-        <i class="far fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
-      </h4>
-      <% end %>
-      <% end %>
 
       <table class="table table-lg table-dark text-light mb-3">
         <tbody>
@@ -57,6 +36,39 @@
           </tr>
         </tbody>
       </table>
+
+     <div style="display:inline-flex">
+      <% if @recipe.good_by?(current_member) %>
+      <%= link_to recipe_goods_path(@recipe), method: :delete do %>
+      <h4 class="mb-4 px-2 btn btn-warning btn-sm">
+        <i class="fas fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
+      </h4>
+      <% end %>
+      <% else %>
+      <%= link_to recipe_goods_path(@recipe), method: :post do %>
+      <h4 class="mb-4 px-2 btn btn-sm btn-light border border-dark">
+        <i class="far fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
+      </h4>
+      <% end %>
+      <% end %>
+      <p class="text-secondary pt-1">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※いいねを押した投稿はホーム画面から見る事ができます
+      </p>
+    </div>
+
+      <%= form_with model: [@recipe, @post_comment] do |f| %>
+    <%= f.text_area :comment, rows: '1', placeholder: "コメントをここに", class:"h-25 w-75" %>
+    <%= f.submit "コメント️", class:"btn btn-primary btn-sm mb-4 px-3" %>
+  <% end %>
+
+    </div>
+    <div class="col-6 mr-4">    <!--右上 材料-->
+      <div class="border border-dark py-3 pl-3 mb-5", style="background-color: #aacf53;"><u><h3>材料</h3></u>
+        <h5><%= safe_join(@recipe.ingredients.split("\n"),tag(:br)) %></h5>
+      </div>
+      <div class="border border-dark py-3 pl-3", style="background-color: #c7dc68;"><u><h3>作り方</h3></u>
+      <%= safe_join(@recipe.explanation.split("\n"),tag(:br)) %>
+      </div>
     </div>
   </div>
 

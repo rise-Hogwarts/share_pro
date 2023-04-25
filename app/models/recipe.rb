@@ -2,7 +2,7 @@ class Recipe < ApplicationRecord
   belongs_to :member, optional: true
   belongs_to :genre, optional: true
   has_many :goods, dependent: :destroy
-  has_many :comments
+  has_many :post_comments, dependent: :destroy
 
   has_one_attached :image
 

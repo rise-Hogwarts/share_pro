@@ -5,7 +5,7 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :recipes
-  has_many :comments
+  has_many :post_comments, dependent: :destroy
   has_many :goods, dependent: :destroy
 
 

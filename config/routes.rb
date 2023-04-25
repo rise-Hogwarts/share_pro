@@ -26,6 +26,7 @@ scope module: :member do #会員側のルート
   get '/explanation' => 'homes#explanation'
   resources :recipes, only: [:index, :show, :new, :create] do
     resource :goods, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
   end
 end
 
