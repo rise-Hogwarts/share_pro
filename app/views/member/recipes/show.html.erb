@@ -38,30 +38,53 @@
       </table>
 
      <div style="display:inline-flex">
-      <% if @recipe.good_by?(current_member) %>
-      <%= link_to recipe_goods_path(@recipe), method: :delete do %>
-      <h4 class="mb-4 px-2 btn btn-warning btn-sm">
-        <i class="fas fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
-      </h4>
-      <% end %>
-      <% else %>
-      <%= link_to recipe_goods_path(@recipe), method: :post do %>
-      <h4 class="mb-4 px-2 btn btn-sm btn-light border border-dark">
-        <i class="far fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
-      </h4>
-      <% end %>
-      <% end %>
-      <p class="text-secondary pt-1">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※いいねを押した投稿はホーム画面から見る事ができます
-      </p>
-    </div>
+       <% if @recipe.good_by?(current_member) %>
+         <%= link_to recipe_goods_path(@recipe), method: :delete do %>
+           <h4 class="mb-4 px-2 btn btn-warning btn-sm">
+             <i class="fas fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
+           </h4>
+         <% end %>
+       <% else %>
+         <%= link_to recipe_goods_path(@recipe), method: :post do %>
+           <h4 class="mb-4 px-2 btn btn-sm btn-light border border-dark">
+             <i class="far fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
+           </h4>
+         <% end %>
+       <% end %>
+       <p class="text-secondary pt-1">
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※いいねを押した投稿はホーム画面から見る事ができます
+       </p>
+     </div>
 
       <%= form_with model: [@recipe, @post_comment] do |f| %>
-    <%= f.text_area :comment, rows: '1', placeholder: "コメントをここに", class:"h-25 w-75" %>
-    <%= f.submit "コメント️", class:"btn btn-primary btn-sm mb-4 px-3" %>
-  <% end %>
+        <%= f.text_area :comment, rows: '1', placeholder: "コメントをここに", class:"h-25 w-75" %>
+        <%= f.submit "コメント️", class:"btn btn-primary btn-sm mb-4 px-3" %>
+      <% end %>
+
+      <%= "#{@recipe.post_comments.count}件のコメント" %><br>
+      <div class="bg-light mb-5 pl-2 py-2">
+      <% @recipe.post_comments.each do |post_comment| %>
+      <div class="mb-3 border-bottom border-secondary">
+      <i class="fas fa-user"></i>
+      <% if post_comment.member_id == @recipe.member_id %>
+        <%= "#{post_comment.member.name}[投稿主]" %>
+      <% else %>
+        <%= post_comment.member.name %>
+      <% end %>
+        &nbsp;&nbsp;&nbsp;
+        <%= post_comment.created_at.strftime('%Y/%m/%d') %><br>
+        &nbsp;&nbsp;&nbsp;
+        <%= post_comment.comment %>
+        <% if post_comment.member == current_member %>
+          <%= link_to "削除", recipe_post_comment_path(post_comment.recipe, post_comment), method: :delete, data: { confirm: 'コメントを削除しますか？'} %>
+        <% end %><br>
+      </div>
+      <% end %>
+      </div>
 
     </div>
+
+
     <div class="col-6 mr-4">    <!--右上 材料-->
       <div class="border border-dark py-3 pl-3 mb-5", style="background-color: #aacf53;"><u><h3>材料</h3></u>
         <h5><%= safe_join(@recipe.ingredients.split("\n"),tag(:br)) %></h5>
