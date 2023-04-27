@@ -31,7 +31,9 @@ scope module: :member do #会員側のルート
 end
 
 namespace :admin do
-  resources :recipes, only: [:index, :show]
+  resources :recipes, only: [:index, :show] do
+    resources :post_comments, only: [:destroy]
+  end
   resources :members, only: [:index, :show, :update]
   resources :genres, only: [:index, :create, :destroy]
 end
