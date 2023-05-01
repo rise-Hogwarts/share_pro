@@ -2,7 +2,7 @@
 
 
   <div class="row", style="background-color: #fff3b8;">
-    <h1 class="mx-auto font-weight-bold px-5 py-3 mt-5">〜 レ シ ピ 情 報 〜</h1s>
+    <h1 class="mx-auto font-weight-bold px-5 py-3 mt-5">〜 お気に入りレシピ 〜</h1s>
   </div>
   <div class="row", style="background-color: #fff3b8;">
     <h4 class="mt-4 pb-5 mx-auto"><u>レシピをクリックすると詳細ページへ移動できます</u></h4>
@@ -45,7 +45,7 @@
           <% @genres.each do |genre| %>
           <tr>
             <td>
-              <%= link_to "・#{genre.name}", admin_recipes_path(genre_id: genre.id), class: "text-primary font-weight-bold" %>
+              <%= link_to "・#{genre.name}", recipes_path(genre_id: genre.id), class: "text-primary font-weight-bold" %>
             </td>
           </tr>
           <% end %>
@@ -80,12 +80,12 @@
   </table>
     </div>
 
-      <% @recipes.each do |recipe| %>
+      <% @good_recipes.each do |recipe| %>
         <!--<div>-->
 
 
       <div class="mb-5 ml-5 pt-2 col-3" style="background-color: #fdede4;">
-        <%= link_to admin_recipe_path(recipe.id) do %>
+        <%= link_to recipe_path(recipe.id) do %>
          <div class="text-center">
           <%= image_tag recipe.image, size: "260x150", class:"rounded" %>
          </div>

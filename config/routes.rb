@@ -23,12 +23,18 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
 
 scope module: :member do #会員側のルート
   root to: 'homes#top'
-  get '/explanation' => 'homes#explanation'
+  # get '/goods' => 'homes#goods', as: 'goods'
   resources :recipes, only: [:index, :show, :new, :create] do
     resource :goods, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
   end
-end
+  resources :members do
+    member do
+      get :goods
+    end
+  end
+
+  end
 
 namespace :admin do
   resources :recipes, only: [:index, :show] do
