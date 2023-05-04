@@ -1,4 +1,47 @@
-<div class="container">
+<div class="container-fluid pt-5", style="background-color: mistyrose;">
+  <div class="row">
+    <h4 class="font-weight-bold col-4 ml-5 bg-light text-center rounded-pill text-info border border-info">ユ ー ザ 情 報</h4>
+    <h4 class="font-weight-bold col-6 mx-auto bg-light text-center rounded-pill text-danger border border-danger"><%= "レ シ ピ (全#{@member.recipes.count}件)" %></h4>
+  </div>
+  <div class="row">
+    <table class="table table-bordered col-4 bg-light h-25 ml-5">
+      <tbody>
+        <tr>
+          <td class="col-4">会員番号</td><td class="col-8"><%= @member.id %></td>
+        </tr>
+        <tr>
+          <td>ユーザ名</td><td><%= @member.name %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td><td><%= @member.email %></td>
+        </tr>
+        <tr>
+          <td>会員ステータス</td>
+          <% if @member.is_deleted == true %>
+            <td>退会済み</td>
+          <% elsif @member.is_deleted == false %>
+            <td>有効</td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table col-6 bg-light mx-auto">
+            <% @member.recipes.each do |recipe| %>
+            <tbody class="h-100">
+              <tr>
+
+                <td class="col-2 pl-3 py-3"><%= link_to admin_recipe_path(recipe.id) do %><%= image_tag recipe.image, size: "200x170", class:"rounded" %><% end %></td>
+                <td class="py-3"><%= link_to admin_recipe_path(recipe.id) do %><h3 class="font-weight-bold mb-4", style="color: darkorange;"><%= "＜ #{recipe.name.truncate(25)} ＞" %></h3><% end %>
+
+                    <p class="font-weight-bold lead", style="color: maroon;">&nbsp;<%= "「#{recipe.genre.name}」のレシピ" %>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;<%= "たんぱく質量 (#{recipe.protein}g)" %></p>
+                    <p class="text-secondary mt-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;<%= recipe.member.name %>&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;<%= recipe.created_at.strftime('%Y / %m / %d') %>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbs-up"></i><%= recipe.goods.count %></p>
+                    </td>
+              </tr>
+            </tbody>
+            <% end %>
+          </table>
+  </div>
 
 
 <%= form_with model: @member, url: admin_member_path(@member.id), method: :patch do |f| %>
@@ -28,3 +71,6 @@
 
   </div>
 <% end %>
+
+
+<%#= "#{@member.recipes.count}件" %>
