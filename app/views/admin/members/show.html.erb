@@ -1,10 +1,11 @@
 <div class="container-fluid pt-5", style="background-color: mistyrose;">
   <div class="row">
     <h4 class="font-weight-bold col-4 ml-5 bg-light text-center rounded-pill text-info border border-info">ユ ー ザ 情 報</h4>
-    <h4 class="font-weight-bold col-6 mx-auto bg-light text-center rounded-pill text-danger border border-danger"><%= "レ シ ピ (全#{@member.recipes.count}件)" %></h4>
+    <h4 class="font-weight-bold col-6 mx-auto bg-light text-center rounded-pill text-danger border border-danger"><%= "投 稿 レ シ ピ (全#{@member.recipes.count}件)" %></h4>
   </div>
   <div class="row">
-    <table class="table table-bordered col-4 bg-light h-25 ml-5">
+    <div class="col-4">
+    <table class="table table-bordered bg-light h-25 ml-5">
       <tbody>
         <tr>
           <td class="col-4">会員番号</td><td class="col-8"><%= @member.id %></td>
@@ -25,7 +26,35 @@
         </tr>
       </tbody>
     </table>
-    <table class="table col-6 bg-light mx-auto">
+    <%= form_with model: @member, url: admin_member_path(@member.id), method: :patch do |f| %>
+        <%#= form_with(model: @member, local: true) do |form| %>
+      <div class="col-11 border rounded-pill bg-light">
+        <div class="text-center border-bottom border-secondary">
+         <%= f.label :会員ステータス %>
+        </div><br />
+
+      <div class="text-center">
+        <%= f.radio_button :is_deleted, false %>
+        <%= f.label :is_deleted, '有効', value: false %>
+
+        <%= f.radio_button :is_deleted, true %>
+        <%= f.label :is_deleted, '退会', value: true %>
+      </div>
+    </div>
+        <%# end %>
+
+
+      <div class="col-2"></div>
+      <div class="col">
+        <%= f.submit "変更を保存", class:"btn btn-success btn-lg mt-4" %>
+      </div>
+
+      <% end %>
+    </div>
+
+  <div class="col-1"></div>
+   <div class="col-6 ml-3">
+    <table class="table bg-light mx-auto">
             <% @member.recipes.each do |recipe| %>
             <tbody class="h-100">
               <tr>
@@ -41,36 +70,14 @@
             </tbody>
             <% end %>
           </table>
+          </div>
   </div>
 
 
-<%= form_with model: @member, url: admin_member_path(@member.id), method: :patch do |f| %>
 
-    <div class="row mt-2">
-        <%#= form_with(model: @member, local: true) do |form| %>
-      <div class="col-2">
-         <%= f.label :会員ステータス %>
-      </div>
-      <div class="col-1">
-        <%= f.radio_button :is_deleted, false %>
-        <%= f.label :is_deleted, '有効', value: false %>
-      </div>
-      <div class="col">
-        <%= f.radio_button :is_deleted, true %>
-        <%= f.label :is_deleted, '退会', value: true %>
-      </div>
-        <%# end %>
-    </div>
-
-    <div class="row">
-      <div class="col-2"></div>
-      <div class="col">
-        <%= f.submit "変更を保存", class:"btn btn-success btn-lg mt-4" %>
-      </div>
-    </div>
 
   </div>
-<% end %>
+
 
 
 <%#= "#{@member.recipes.count}件" %>
