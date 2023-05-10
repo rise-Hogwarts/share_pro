@@ -1,3 +1,4 @@
 <% if member_signed_in? %>
   <%= link_to "お気に入りレシピ", goods_member_path(current_member) %>
+  <%= link_to "自分が投稿したレシピ", my_recipe_path %>
 <% end %>

@@ -28,25 +28,20 @@
     </table>
     <%= form_with model: @member, url: admin_member_path(@member.id), method: :patch do |f| %>
         <%#= form_with(model: @member, local: true) do |form| %>
-      <div class="col-11 border rounded-pill bg-light">
-        <div class="text-center border-bottom border-secondary">
-         <%= f.label :会員ステータス %>
+      <div class="col-12 ml-5 py-2 mt-5 border rounded-pill text-center", style="background-color: palegoldenrod;">
+        <div class="text-center border-bottom border-secondary font-weight-bold">
+         <%= f.label :会員ステータス編集 %>
         </div><br />
 
-      <div class="text-center">
+      <div class="text-center mb-2">
         <%= f.radio_button :is_deleted, false %>
         <%= f.label :is_deleted, '有効', value: false %>
 
         <%= f.radio_button :is_deleted, true %>
         <%= f.label :is_deleted, '退会', value: true %>
       </div>
-    </div>
-        <%# end %>
 
-
-      <div class="col-2"></div>
-      <div class="col">
-        <%= f.submit "変更を保存", class:"btn btn-success btn-lg mt-4" %>
+        <%= f.submit "変更を保存", class:"btn btn-success btn-sm w-75 rounded-pill" %>
       </div>
 
       <% end %>
@@ -54,17 +49,17 @@
 
   <div class="col-1"></div>
    <div class="col-6 ml-3">
-    <table class="table bg-light mx-auto">
+    <table class="table bg-light mx-auto border", style="background-color: #f0fff0;">
             <% @member.recipes.each do |recipe| %>
             <tbody class="h-100">
               <tr>
 
                 <td class="col-2 pl-3 py-3"><%= link_to admin_recipe_path(recipe.id) do %><%= image_tag recipe.image, size: "200x170", class:"rounded" %><% end %></td>
-                <td class="py-3"><%= link_to admin_recipe_path(recipe.id) do %><h3 class="font-weight-bold mb-4", style="color: darkorange;"><%= "＜ #{recipe.name.truncate(25)} ＞" %></h3><% end %>
+                <td class="py-3"><%= link_to admin_recipe_path(recipe.id) do %><h3 class="font-weight-bold mb-4", style="color: #ec6800;"><%= "〜 #{recipe.name.truncate(25)} 〜" %></h3><% end %>
 
                     <p class="font-weight-bold lead", style="color: maroon;">&nbsp;<%= "「#{recipe.genre.name}」のレシピ" %>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;<%= "たんぱく質量 (#{recipe.protein}g)" %></p>
                     <p class="text-secondary mt-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;<%= recipe.member.name %>&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;<%= recipe.created_at.strftime('%Y / %m / %d') %>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbs-up"></i><%= recipe.goods.count %></p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbs-up"></i><%= "#{recipe.goods.count}いいね" %></p>
                     </td>
               </tr>
             </tbody>

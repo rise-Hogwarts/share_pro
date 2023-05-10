@@ -1,0 +1,51 @@
+<div class="container-fluid pb-5">
+
+  <div class="row mb-3">
+    <h3 class="text-light text-center font-weight-bold rounded-bottom px-5 w-25 py-2 mx-auto", style="background-color: saddlebrown">マ イ ペ ー ジ</h3>
+  </div>
+
+  <div class="row">
+    <table class="table table-bordered col-10 table-active h-100 mx-auto lead", style="background-color: lightyellow;">
+      <tbody>
+        <tr>
+          <td class="col-2">会員番号</td><td class="col-4"><%= current_member.id %></td><td class="col-2">メールアドレス</td><td class="col-4"><%= current_member.email %></td>
+        </tr>
+        <tr>
+          <td>ユーザ名</td><td><%= current_member.name %></td><td>レシピ投稿数</td><td><%= "#{current_member.recipes.count}件" %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+    <% if current_member.recipes.count == 0 %>
+    <div class="row">
+      <h3 class="mx-auto my-5">現在投稿しているレシピはありません</h3>
+    </div>
+    <% else %>
+    <div class="row">
+    <table class="table col-9 mx-auto border my-5", style="background-color: #f0fff0;">
+      <% current_member.recipes.each do |recipe| %>
+      <tbody class="h-100">
+              <tr>
+                <td class="col-2 pl-3 py-3"><%= link_to recipe_path(recipe.id) do %><%= image_tag recipe.image, size: "200x170", class:"rounded" %><% end %></td>
+                <td class="col-8 py-3"><%= link_to recipe_path(recipe.id) do %><h3 class="font-weight-bold mb-4", style="color: #ec6800;"><%= "〜 #{recipe.name.truncate(25)} 〜" %></h3><% end %>
+
+                    <p class="font-weight-bold lead", style="color: maroon;">&nbsp;<%= "「#{recipe.genre.name}」のレシピ" %>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;<%= "たんぱく質量 (#{recipe.protein}g)" %></p>
+                    <p class="text-secondary mt-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;<%= recipe.member.name %>&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;<%= recipe.created_at.strftime('%Y / %m / %d') %>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbs-up"></i><%= "#{recipe.goods.count}いいね" %></p>
+                    </td>
+                <td class="col-3 border-left align-middle text-center"><%= link_to home_path(recipe.id), method: :delete, data: { confirm: '投稿を削除しますか？'} do %><div class="btn btn-danger px-3 pt-2 border rounded-pill"><h1 class="text-light"><i class="fas fa-trash-alt"></i></h1></div><% end %></td>
+              </tr>
+            </tbody>
+      <% end %>
+    </table>
+    </div>
+    <% end %>
+
+
+
+
+</div>
+

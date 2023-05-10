@@ -1,69 +1,27 @@
-<div class="container-fluid">
+<div class="container-fluid py-5", style="background-color: #fff3b8;">
 
 
-  <div class="row", style="background-color: #fff3b8;">
-    <h1 class="mx-auto font-weight-bold px-5 py-3 mt-5">〜 お気に入りレシピ 〜</h1s>
-  </div>
-  <div class="row", style="background-color: #fff3b8;">
-    <h4 class="mt-4 pb-5 mx-auto"><u>レシピをクリックすると詳細ページへ移動できます</u></h4>
-  </div>
-
-
-
-
-
-
-<!--  <div class="input-group">-->
-    <%#= text_field_tag :search, params[:search], placeholder: "キーワード検索", class: "form-control" %>
-<!--    <span class="input-group-btn">-->
-        <%#= button_tag "検索", :name => nil, class: "btn btn-primary" %>
-<!--    </span>-->
-<!--</div>-->
-
-
-
-  </div>
   <div class="row">
+    <h1 class="mx-auto font-weight-bold px-5 py-3 mb-4 rounded-pill", style="background-color: lightpink;">〜 お気に入りレシピ 〜</h1s>
+  </div>
 
-    <!--<div class="col-9">-->
-    <div class="d-flex flex-wrap col-10 border-left border-top pl-5", style="background-color: pink;">
-
-
+  <div class="row">
+    <table class="table table-sm col-8 mt-3 border mx-auto", style="background-color: #f0fff0;">
       <% @good_recipes.each do |recipe| %>
-
-
-      <div class="mb-5 ml-5 mr-4 pt-2 col-3" style="background-color: white;">
-        <%= link_to recipe_path(recipe.id) do %>
-         <div class="text-center">
-          <%= image_tag recipe.image, size: "260x150", class:"rounded" %>
-         </div>
-
-
-
-        <!--<div class="mr-4">-->
-        <div class="col">
-          <table class="table table-sm table-responsive text-nowrap mt-2">
-            <tbody>
-              <tr><td class="overflow-x-auto font-weight-bold", style="color: crimson;"><%= "#{recipe.name}" %></td></tr>
-              <tr><td class="font-weight-bold"><%= "たんぱく質量 _ #{recipe.protein}グラム" %></td></tr>
-              <% end %>
-
-
-
-
+      <tbody>
+              <tr>
+                <td class="col-2 pl-3 py-3"><%= link_to recipe_path(recipe.id) do %><%= image_tag recipe.image, size: "200x170", class:"rounded" %><% end %></td>
+                &nbsp;&nbsp;<td class="py-3"><%= link_to recipe_path(recipe.id) do %><h3 class="font-weight-bold mb-4", style="color: darkorange;">&nbsp;&nbsp;<%= "〜#{recipe.name}〜" %></h3><% end %>
+                    <p class="font-weight-bold lead", style="color: maroon;">&nbsp;<%= "「#{recipe.genre.name}」のレシピ" %>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;<%= "たんぱく質量 (#{recipe.protein}g)" %></p>
+                    <p class="text-secondary mt-5">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;<%= recipe.member.name %>&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;<%= recipe.created_at.strftime('%Y / %m / %d') %>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbs-up"></i><%= "#{recipe.goods.count}いいね" %></p>
+                    </td>
+              </tr>
             </tbody>
-          </table>
-
-         <table class="table-responsive">
-           <tbody>
-             <tr><td class="text-secondary text-nowrap col-2"><%= "#{recipe.created_at.strftime('%Y/%m/%d')} |" %></td><td class="text-secondary text-nowrap col-10"><i class="fas fa-user"></i>&nbsp;<%= recipe.member.name %></td></tr>
-           </tbody>
-         </table>
-        </div>
-
-     </div>
       <% end %>
-    </div>
+    </table>
+
+
     <!--</div>-->
   <!--</div>-->
 
