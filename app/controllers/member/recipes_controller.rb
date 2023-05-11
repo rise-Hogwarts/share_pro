@@ -34,8 +34,11 @@ class Member::RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.member_id = current_member.id
-    @recipe.save
-    redirect_to recipes_path
+    if @recipe.save
+      redirect_to recipes_path
+    else
+      render :new
+    end
   end
 
 

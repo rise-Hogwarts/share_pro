@@ -24,6 +24,7 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
 scope module: :member do #会員側のルート
   root to: 'homes#top'
   get '/my_recipes' => 'homes#my_recipe', as: 'my_recipe'
+  post '/recipe/confirm' => 'recipes#confirm', as: 'confirm'
   resources :homes, only: [:destroy]
   # get '/goods' => 'homes#goods', as: 'goods'
   resources :recipes, only: [:index, :show, :new, :create] do

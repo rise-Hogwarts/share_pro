@@ -8,9 +8,9 @@
   </div>
 
 
-  <div class="row ml-5">
+  <div class="row px-5">
 
-    <div class="col-5 ml-3">    <!--左下 レシピ画像-->
+    <div class="col-5 mx-auto">    <!--左下 レシピ画像-->
       <%= image_tag @recipe.image, size: "550x400", class:'border border-dark mb-4' %>
 
       <table class="table table-lg mb-3", style="background-color: white;">
@@ -70,7 +70,7 @@
     </div>
 
 
-    <div class="col-6 mr-4">    <!--右上 材料-->
+    <div class="col-6 mx-auto">    <!--右上 材料-->
       <div class="border border-dark py-3 pl-3 mb-5", style="background-color: #aacf53;"><u><h3>材料</h3></u>
         <h5><%= safe_join(@recipe.ingredients.split("\n"),tag(:br)) %></h5>
       </div>

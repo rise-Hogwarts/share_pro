@@ -1,4 +1,12 @@
 class Recipe < ApplicationRecord
+  validates :name, presence: true
+  validates :genre_id, presence: true
+  validates :ingredients, presence: true
+  validates :explanation, presence: true
+  validates :protein, presence: true
+  validates :image, presence: true
+
+
   belongs_to :member, optional: true
   belongs_to :genre, optional: true
   has_many :goods, dependent: :destroy
