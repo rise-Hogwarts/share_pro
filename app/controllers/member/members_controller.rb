@@ -1,5 +1,5 @@
 class Member::MembersController < ApplicationController
-  before_action :set_member, only: [:goods]
+  # before_action :set_member, only: [:goods]
 
 
   def goods
@@ -8,8 +8,8 @@ class Member::MembersController < ApplicationController
     @good_recipes = Recipe.find(goods)
   end
 
-private
-  def set_member
-    @member = Member.find(params[:id])
-  end
+# private
+#   def set_member
+#     @member = Member.find(params[:id])
+#   end
 end

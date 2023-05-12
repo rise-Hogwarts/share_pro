@@ -30,43 +30,13 @@
   </div>
 
   <div class="row mb-5">
-
-
-    <!--<div class="d-flex flex-wrap col-10 border-left border-top pl-5">-->
-    <!--<%# @recipes.each do |recipe| %>-->
-    <!--  <div class="mb-5 ml-5 pt-2 col-3" style="background-color: #fdede4;">-->
-    <!--    <%#= link_to admin_recipe_path(recipe.id) do %>-->
-    <!--       <div class="text-center">-->
-    <!--         <%#= image_tag recipe.image, size: "260x150", class:"rounded" %>-->
-    <!--       </div>-->
-
-    <!--  <div class="col">-->
-    <!--    <table class="table table-sm table-responsive text-nowrap mt-2">-->
-    <!--      <tbody>-->
-    <!--        <tr><td class="overflow-x-auto font-weight-bold", style="color: crimson;"><%#= "#{recipe.name}" %></td></tr>-->
-    <!--        <tr><td class="font-weight-bold"><%#= "たんぱく質量 _ #{recipe.protein}グラム" %></td></tr>-->
-    <!--    <%# end %>-->
-    <!--      </tbody>-->
-    <!--    </table>-->
-
-    <!--     <table class="table table-responsive">-->
-    <!--       <tbody>-->
-    <!--         <tr><td class="text-secondary text-nowrap col-2"><%#= "#{recipe.created_at.strftime('%Y/%m/%d')} | " %></td><td class="text-secondary text-nowrap col-10"><i class="fas fa-user"></i>&nbsp;<%#= recipe.member.name %></td></tr>-->
-    <!--       </tbody>-->
-    <!--     </table>-->
-    <!--    </div>-->
-    <!-- </div>-->
-    <!--  <%# end %>-->
-
-
-        <!--<div class="col-12">-->
         <div class="col-1"></div>
           <table class="table col-8 mt-3 border", style="background-color: #f0fff0;">
             <% @recipes.each do |recipe| %>
             <tbody class="h-100">
               <tr>
                 <td class="col-2 pl-3 py-3"><%= link_to recipe_path(recipe.id) do %><%= image_tag recipe.image, size: "200x170", class:"rounded" %><% end %></td>
-                <td class="py-3"><%= link_to recipe_path(recipe.id) do %><h3 class="font-weight-bold mb-4", style="color: #ec6800;"><%= "〜 #{recipe.name} 〜" %></h3><% end %>
+                <td class="py-3"><%= link_to recipe_path(recipe.id) do %><h4 class="font-weight-bold mb-4", style="color: salmon;"><%= "〜 #{recipe.name.truncate(30)} 〜" %></h4><% end %>
                     <p class="font-weight-bold lead", style="color: maroon;">&nbsp;<%= "「#{recipe.genre.name}」のレシピ" %>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;<%= "たんぱく質量 (#{recipe.protein}g)" %></p>
                     <p class="text-secondary mt-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;<%= recipe.member.name %>&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;<%= recipe.created_at.strftime('%Y / %m / %d') %>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbs-up"></i><%= "#{recipe.goods.count}いいね" %></p>
@@ -94,11 +64,16 @@
         </tbody>
       </table>
     </div>
+    </div>
 
-
-
-
-    <!--</div>-->
+     <div class="row">
+       <div class="col-1"></div>
+       <div class="col-8">
+         <h4 class="mb-5">
+           <%= paginate @recipes %>
+         </h4>
+       </div>
+    </div>
 
 </div>
 

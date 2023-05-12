@@ -38,6 +38,7 @@
       </table>
 
      <div class="pt-3 border-top border-dark w-100", style="display:inline-flex">
+      <% if member_signed_in? %>
        <% if @recipe.good_by?(current_member) %>
          <%= link_to recipe_goods_path(@recipe), method: :delete do %>
            <h4 class="mb-4 px-2 btn btn-warning btn-sm">
@@ -54,12 +55,20 @@
        <p class="text-secondary pt-1">
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※いいねを押した投稿はホーム画面から見る事ができます
        </p>
+       <% else %>
+         <p class="mb-4 px-2 bg-light border border-dark">
+           <i class="far fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
+         </p>
+      <% end %>
      </div>
 
+
+     <% if member_signed_in? %>
       <%= form_with model: [@recipe, @post_comment] do |f| %>
         <%= f.text_area :comment, rows: '1', placeholder: "コメントをここに", class:"h-25 w-75" %>
         <%= f.submit "コメント️", class:"btn btn-primary btn-sm mb-4 px-3" %>
       <% end %>
+     <% end %>
 
       <%= "#{@recipe.post_comments.count}件のコメント" %><br>
       <div class="bg-light mb-5 pl-2 py-2">

@@ -2,10 +2,11 @@ class Member::HomesController < ApplicationController
   before_action :set_user, only: [:goods]
 
   def top
+    @recipes = Recipe.all
   end
 
   def my_recipe
-    @recipes = Recipe.all
+    @recipes = current_member.recipes.page(params[:page]).per(7)
   end
 
   def destroy

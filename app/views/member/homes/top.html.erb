@@ -1,4 +1,67 @@
+<div class="container-fluid py-5", style="background-color: cornsilk;">
+  <div class="row">
+    <div class="col-7 my-5 ml-4 border-bottom border-warning bg-light">
+      <h2 class="text-center mx-auto border-top border-bottom border-warning text-dark font-weight-bold py-3", style="background-color: greenyellow;">
+        シ ェ ア プ ロ へ よ う こ そ ！！</h2><br>
+        <h5 class="text-center font-weight-bold mb-4">
+        シェアプロではユーザが投稿したタンパク質料理を見る事が出来ます。</h5>
+        <h5 class="text-center">
+        不足しがちなたんぱく質を普段の食事に取り入れる事ができるので、<br>
+        筋トレが好きな方やダイエットをしている方以外の方にもオススメです！！</h5>
+    </div>
+    <div class="border-left border-dark mx-4 my-4"></div>
+    <div class="col-4 my-5 pt-3 border-top border-bottom border-info", style="background-color: lightcyan;">
+      <h4 class="mt-2 text-center"><u>share_proを利用するにあたって</u></h4>
+      <p class="text-info font-weight-bold mt-3">&nbsp;&nbsp;&nbsp;&nbsp;実際に体づくりを健康的に行うためには他の栄養素 （糖質、脂質、ビタミン、ミネラルなど） を
+         バランスよく取る必要が<br>
+         あります。<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;こちらのサイトでは、たんぱく質が取れるレシピを投稿・閲覧できるものなので
+         さまざまな料理の中の一つのアイデアとして参考にしましょう。
+      </p>
+    </div>
+  </div>
+  <div class="row ml-5 pt-5 pl-4">
+    <h4 class="font-weight-bold text-secondary">新 着 レ シ ピ</h4>
+  </div>
+  <div class="row mx-5">
+  <table class="table col-9 border-bottom", style="background-color: #f0fff0;">
+    <% @recipes.last(6).reverse_each do |recipe| %>
+    <tbody>
+      <tr>
+        <td class="col-2 pl-3 py-3"><%= link_to recipe_path(recipe.id) do %><%= image_tag recipe.image, size: "200x170", class:"rounded" %><% end %></td>
+        <td class="py-3"><%= link_to recipe_path(recipe.id) do %><h4 class="font-weight-bold mb-4", style="color: salmon;">&nbsp;&nbsp;&nbsp;<%= "〜 #{recipe.name.truncate(30)} 〜" %></h4><% end %>
+          <p class="font-weight-bold lead", style="color: maroon;">&nbsp;<%= "「#{recipe.genre.name}」のレシピ" %>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;<%= "たんぱく質量 (#{recipe.protein}g)" %></p>
+          <p class="text-secondary mt-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;<%= recipe.member.name %>&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;<%= recipe.created_at.strftime('%Y / %m / %d') %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbs-up"></i><%= "#{recipe.goods.count}いいね" %></p>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+  <% if member_signed_in? %>
+  <div class="col ml-5 h-50 py-3 border table-active">
+    <%= link_to my_recipe_path do %>
+      <p class="btn btn-success btn-lg font-weight-bold rounded text-light px-5 py-3 mt-2"><i class="fas fa-user-tie"></i>
+      &nbsp;&nbsp;&nbsp;マ イ ペ ー ジ</p>
+    <% end %><br>
+    <%= link_to new_recipe_path do %>
+      <p class="btn btn-warning btn-lg font-weight-bold rounded text-dark px-5 py-3"><i class="fas fa-utensils"></i>
+      &nbsp;&nbsp;&nbsp;レ シ ピ 投 稿</p>
+    <% end %><br>
+    <%= link_to goods_member_path(current_member) do %>
+      <p class="btn btn-danger btn-lg font-weight-bold rounded text-light px-5 py-3"><i class="fas fa-utensils"></i>
+      &nbsp;&nbsp;&nbsp;お 気 に 入 り</p>
+    <% end %>
+  </div>
+  <% end %>
+  </div>
+</div>
+
+
+
+
+
+
 <% if member_signed_in? %>
-  <%= link_to "お気に入りレシピ", goods_member_path(current_member) %>
-  <%= link_to "自分が投稿したレシピ", my_recipe_path %>
+
 <% end %>

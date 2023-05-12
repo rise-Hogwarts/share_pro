@@ -1,10 +1,11 @@
 class Admin::MembersController < ApplicationController
   def index
-    @members = Member.all
+    @members = Member.all.page(params[:page]).per(20)
   end
 
   def show
     @member = Member.find(params[:id])
+    @recipes = @member.recipes.page(params[:page]).per(7)
   end
 
   def update
