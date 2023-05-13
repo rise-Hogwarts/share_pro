@@ -20,7 +20,6 @@
     </div>
       <% end %>
     </div>
-
     <div class="col-5 mt-4">
       <%= link_to '新着順', recipes_path(latest: "true"), class:"btn btn-warning px-4 rounded-pill" %>
       <%= link_to '古い順', recipes_path(old: "true"), class:"btn btn-warning px-4 rounded-pill" %>
@@ -30,23 +29,11 @@
   </div>
 
   <div class="row mb-5">
-        <div class="col-1"></div>
-          <table class="table col-8 mt-3 border", style="background-color: #f0fff0;">
-            <% @recipes.each do |recipe| %>
-            <tbody class="h-100">
-              <tr>
-                <td class="col-2 pl-3 py-3"><%= link_to recipe_path(recipe.id) do %><%= image_tag recipe.image, size: "200x170", class:"rounded" %><% end %></td>
-                <td class="py-3"><%= link_to recipe_path(recipe.id) do %><h4 class="font-weight-bold mb-4", style="color: salmon;"><%= "〜 #{recipe.name.truncate(30)} 〜" %></h4><% end %>
-                    <p class="font-weight-bold lead", style="color: maroon;">&nbsp;<%= "「#{recipe.genre.name}」のレシピ" %>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;<%= "たんぱく質量 (#{recipe.protein}g)" %></p>
-                    <p class="text-secondary mt-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;<%= recipe.member.name %>&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;<%= recipe.created_at.strftime('%Y / %m / %d') %>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbs-up"></i><%= "#{recipe.goods.count}いいね" %></p>
-                    </td>
-              </tr>
-            </tbody>
-            <% end %>
-          </table>
-        <!--</div>-->
-        <div class="col mx-5 pl-5 mt-3 border-left border-secondary">
+    <div class="col-1"></div>
+      <table class="table col-8 mt-3 border", style="background-color: #f0fff0;">
+        <%= render 'layouts/member_recipes', recipes: @recipes %>
+      </table>
+    <div class="col mx-5 pl-5 mt-3 border-left border-secondary">
       <table class="table table-bordered table-responsive", style="background-color: #fdeff2;">
         <thead>
           <tr>
@@ -54,28 +41,25 @@
           </tr>
         </thead>
         <tbody>
-          <% @genres.each do |genre| %>
+      <% @genres.each do |genre| %>
           <tr>
             <td>
               <%= link_to "・#{genre.name}", recipes_path(genre_id: genre.id), class: "text-primary font-weight-bold" %>
             </td>
           </tr>
-          <% end %>
+      <% end %>
         </tbody>
       </table>
     </div>
-    </div>
+  </div>
 
-     <div class="row">
-       <div class="col-1"></div>
-       <div class="col-8">
-         <h4 class="mb-5">
-           <%= paginate @recipes %>
-         </h4>
-       </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-8">
+      <h4 class="mb-5">
+        <%= paginate @recipes %>
+      </h4>
     </div>
+  </div>
 
 </div>
-
-
-<%#= "(材料) #{recipe.ingredients.truncate(40)}" %>

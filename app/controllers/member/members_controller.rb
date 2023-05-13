@@ -5,7 +5,7 @@ class Member::MembersController < ApplicationController
   def goods
     @member = Member.find(params[:id])
     goods = Good.where(Member_id: @member.id).pluck(:recipe_id)
-    @good_recipes = Recipe.find(goods)
+    @recipes = Recipe.find(goods)
   end
 
 # private

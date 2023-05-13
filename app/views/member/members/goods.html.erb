@@ -1,30 +1,19 @@
 <div class="container-fluid py-5", style="background-color: #fff3b8;">
 
-
   <div class="row">
     <h1 class="mx-auto font-weight-bold px-5 py-3 mb-4 rounded", style="background-color: lightpink;">〜 お気に入りレシピ 〜</h1>
   </div>
 
   <div class="row mt-4">
     <h5 class="mx-auto">
-      <%= "#{@good_recipes.count} 件 の レ シ ピ" %>
+      <%= "#{@recipes.count} 件 の レ シ ピ" %>
     </h5>
   </div>
   <div class="row">
     <table class="table table-sm col-8 mt-3 border mx-auto", style="background-color: #f0fff0;">
-      <% @good_recipes.each do |recipe| %>
-      <tbody>
-              <tr>
-                <td class="col-2 pl-3 py-3"><%= link_to recipe_path(recipe.id) do %><%= image_tag recipe.image, size: "200x170", class:"rounded" %><% end %></td>
-                &nbsp;&nbsp;<td class="py-3"><%= link_to recipe_path(recipe.id) do %><h4 class="font-weight-bold mb-4", style="color: salmon;">&nbsp;&nbsp;<%= "〜#{recipe.name}〜" %></h4><% end %>
-                    <p class="font-weight-bold lead", style="color: maroon;">&nbsp;<%= "「#{recipe.genre.name}」のレシピ" %>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;<%= "たんぱく質量 (#{recipe.protein}g)" %></p>
-                    <p class="text-secondary mt-5">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;<%= recipe.member.name %>&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;<%= recipe.created_at.strftime('%Y / %m / %d') %>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbs-up"></i><%= "#{recipe.goods.count}いいね" %></p>
-                    </td>
-              </tr>
-            </tbody>
-      <% end %>
+      <%= render 'layouts/member_recipes', recipes: @recipes %><!--レシピ一覧テーブルの中身-->
     </table>
   </div>
+
 </div>
 

@@ -23,47 +23,50 @@
             <ul class="navbar-nav ml-auto">
             <% if member_signed_in? %>
             <li class="nav-item">
-                <%= link_to "HOME", root_path, class:'mr-3 text-light' %>
+                <%= link_to "ホーム画面", root_path, class:'mr-4 text-light' %>
             </li>
             /
             <li class="nav-item">
-                <%= link_to "レシピ一覧", recipes_path, class:'mx-3 text-light' %>
+                <%= link_to "レシピ一覧", recipes_path, class:'mr-4 ml-4 text-light' %>
             </li>
             /
             <li class="nav-item">
-                <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class:'mr-5 ml-3 text-light' %>
+              <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class:'mr-5 ml-3 text-light' %>
             </li>
             <% elsif admin_signed_in? %>
             <li class="nav-item">
-              <%= link_to "会員一覧", admin_members_path, class:'mr-3 text-light' %>
+              <%= link_to "会員一覧", admin_members_path, class:'mr-4 text-light' %>
             </li>
             /
             <li class="nav-item">
-              <%= link_to "レシピ一覧", admin_recipes_path, class:'mx-3 text-light' %>
+              <%= link_to "レシピ一覧", admin_recipes_path, class:'mx-4 text-light' %>
             </li>
             /
             <li class="nav-item">
-              <%= link_to "ジャンル追加", admin_genres_path, class:'mx-3 text-light' %>
+              <%= link_to "ジャンル追加", admin_genres_path, class:'mx-4 text-light' %>
             </li>
             /
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:'mr-5 ml-3 text-light' %>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:'mr-5 ml-4 text-light' %>
             </li>
             <% else %>
             <li class="nav-item">
-              <%= link_to "HOME", root_path, class:'mr-3 text-light' %>
+              <%= link_to "ホーム画面", root_path, class:'mr-3 text-light' %>
+            </li>
+            /
+            <li class="nav-item border-right border-light">
+              <%= link_to "レシピ一覧", recipes_path, class:'ml-3 mr-5 text-light' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_member_registration_path, class:'mr-2 ml-5 text-light' %>
             </li>
             /
             <li class="nav-item">
-              <%= link_to "新規登録", new_member_registration_path, class:'mx-3 text-light' %>
+              <%= link_to "ログイン", new_member_session_path, class:'mx-2 text-light' %>
             </li>
             /
             <li class="nav-item">
-              <%= link_to "ログイン", new_member_session_path, class:'mx-3 text-light' %>
-            </li>
-            /
-            <li class="nav-item">
-              <%= link_to 'ゲストログイン', '/guest_sign_in', method: :post, class:"mr-5 ml-3 text-light" %>
+              <%= link_to 'ゲストログイン', '/guest_sign_in', method: :post, class:"mx-2 text-light" %>
             </li>
             <% end %>
             </ul>
