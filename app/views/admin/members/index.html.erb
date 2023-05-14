@@ -34,6 +34,13 @@
       </table>
     </div>
   </div>
-  <div class="row my-5 py-5"></div>
-  <div class="row my-5 py-5"></div>
+    <div class="row">
+       <div class="col-1"></div>
+       <div class="col-8">
+         <h4 class="mb-5">
+           <%= paginate @members %>
+         </h4>
+       </div>
+    </div>
+  <div class="row py-5"></div>
 </div>

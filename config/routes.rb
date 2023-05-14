@@ -12,7 +12,7 @@ devise_for :members,skip: [:passwords], controllers: {
 
 }
 devise_scope :members do
-  post '/guest_sign_in', to: 'homes#guest'
+  post '/guest_sign_in', to: 'homes#guest', as: 'guest'
 end
 
 # 管理者用
@@ -24,7 +24,6 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
 scope module: :member do #会員側のルート
   root to: 'homes#top'
   get '/my_recipes' => 'homes#my_recipe', as: 'my_recipe'
-  post '/recipe/confirm' => 'recipes#confirm', as: 'confirm'
   resources :homes, only: [:destroy]
   # get '/goods' => 'homes#goods', as: 'goods'
   resources :recipes, only: [:index, :show, :new, :create] do
@@ -40,7 +39,7 @@ scope module: :member do #会員側のルート
   end
 
 namespace :admin do
-  resources :recipes, only: [:index, :show] do
+  resources :recipes, only: [:index, :show, :destroy] do
     resources :post_comments, only: [:destroy]
   end
   resources :members, only: [:index, :show, :update]

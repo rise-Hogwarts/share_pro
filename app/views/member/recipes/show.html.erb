@@ -7,85 +7,64 @@
     </h3>
   </div>
 
-
   <div class="row px-5">
+    <div class="col-5 mx-auto">
+      <%= render 'layouts/recipe_show', recipe: @recipe %><!--レシピと投稿者の情報-->
+        <div class="pt-3 border-top border-dark w-100", style="display:inline-flex">
+          <% if member_signed_in? %>
+            <% if @recipe.good_by?(current_member) %>
+              <%= link_to recipe_goods_path(@recipe), method: :delete do %>
+                <h4 class="mb-4 px-2 btn btn-warning btn-sm">
+                  <i class="fas fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
+                </h4>
+              <% end %>
+            <% else %>
+              <%= link_to recipe_goods_path(@recipe), method: :post do %>
+                <h4 class="mb-4 px-2 btn btn-sm btn-light border border-dark">
+                  <i class="far fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
+                </h4>
+              <% end %>
+            <% end %>
+              <p class="text-secondary pt-1">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※いいねを押した投稿はホーム画面から見る事ができます
+              </p>
+          <% else %>
+            <p class="mb-4 px-2 bg-light border border-dark">
+              <i class="far fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
+            </p>
+        <% end %>
+      </div>
 
-    <div class="col-5 mx-auto">    <!--左下 レシピ画像-->
-      <%= image_tag @recipe.image, size: "550x400", class:'border border-dark mb-4' %>
-
-      <table class="table table-sm", style="background-color: white;">
-        <tbody>
-          <tr>
-            <td class="col-4"><h6 class="font-weight-bold mt-2 border-right border-secondary">　レシピ名</h6></td><td class="col-8 align-middle"><%= @recipe.name %></td>
-          </tr>
-          <tr>
-            <td class="col-4"><h6 class="font-weight-bold mt-2 border-right border-secondary">　ジャンル</h6></td><td class="col-8 align-middle"><%= @recipe.genre.name %></td>
-          </tr>
-          <tr>
-            <td class="col-4"><h6 class="font-weight-bold mt-2 border-right border-secondary">　たんぱく質量</h6></td><td class="col-8 align-middle"><%= "#{@recipe.protein}グラム" %></td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table table-sm text-secondary mb-5", style="background-color: white;">
-        <tbody>
-          <tr>
-            <td class="col-4 pl-4"><i class="fas fa-user"></i>&nbsp;ユーザ名</td><td class="col-8 align-middle"><%= @recipe.member.name %></td>
-          </tr>
-          <tr>
-            <td class="col-4 pl-4"><i class="fas fa-calendar-day"></i>&nbsp;投稿日</td><td class="col-8 align-middle"><%= @recipe.created_at.strftime('%Y / %m / %d') %></td>
-          </tr>
-        </tbody>
-      </table>
-
-     <div class="pt-3 border-top border-dark w-100", style="display:inline-flex">
-       <% if @recipe.good_by?(current_member) %>
-         <%= link_to recipe_goods_path(@recipe), method: :delete do %>
-           <h4 class="mb-4 px-2 btn btn-warning btn-sm">
-             <i class="fas fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
-           </h4>
-         <% end %>
-       <% else %>
-         <%= link_to recipe_goods_path(@recipe), method: :post do %>
-           <h4 class="mb-4 px-2 btn btn-sm btn-light border border-dark">
-             <i class="far fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
-           </h4>
-         <% end %>
+     <% if member_signed_in? %>
+       <%= form_with model: [@recipe, @post_comment] do |f| %>
+         <%= f.text_area :comment, rows: '1', placeholder: "コメントをここに", class:"h-25 w-75" %>
+         <%= f.submit "コメント️", class:"btn btn-primary btn-sm mb-4 px-3" %>
        <% end %>
-       <p class="text-secondary pt-1">
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※いいねを押した投稿はホーム画面から見る事ができます
-       </p>
-     </div>
+     <% end %>
 
-      <%= form_with model: [@recipe, @post_comment] do |f| %>
-        <%= f.text_area :comment, rows: '1', placeholder: "コメントをここに", class:"h-25 w-75" %>
-        <%= f.submit "コメント️", class:"btn btn-primary btn-sm mb-4 px-3" %>
-      <% end %>
-
-      <%= "#{@recipe.post_comments.count}件のコメント" %><br>
-      <div class="bg-light mb-5 pl-2 py-2">
-      <% @recipe.post_comments.each do |post_comment| %>
-      <div class="mb-3 border-bottom border-secondary">
-      <i class="fas fa-user"></i>
-      <% if post_comment.member_id == @recipe.member_id %>
-        <%= "#{post_comment.member.name}[投稿主]" %>
-      <% else %>
-        <%= post_comment.member.name %>
-      <% end %>
-        &nbsp;&nbsp;&nbsp;
-        <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-        &nbsp;&nbsp;&nbsp;
-        <div class="btn border border-primary btn-sm font-weight-bold">
-          <% if post_comment.member == current_member %>
-            <%= link_to "削除", recipe_post_comment_path(post_comment.recipe, post_comment), method: :delete, data: { confirm: 'コメントを削除しますか？'} %>
-          <% end %>
-        </div><br>
-        &nbsp;&nbsp;&nbsp;
-        <%= post_comment.comment %>
-        <br>
+     <%= "#{@recipe.post_comments.count}件のコメント" %><br>
+       <div class="bg-light mb-5 pl-2 py-2">
+         <% @recipe.post_comments.each do |post_comment| %>
+           <div class="mb-3 border-bottom border-secondary">
+           <i class="fas fa-user"></i>
+         <% if post_comment.member_id == @recipe.member_id %>
+           <%= "#{post_comment.member.name}[投稿主]" %>
+         <% else %>
+           <%= post_comment.member.name %>
+         <% end %>
+           &nbsp;&nbsp;&nbsp;
+           <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+           &nbsp;&nbsp;&nbsp;
+             <div class="btn border border-primary btn-sm font-weight-bold">
+               <% if post_comment.member == current_member %>
+                 <%= link_to "削除", recipe_post_comment_path(post_comment.recipe, post_comment), method: :delete, data: { confirm: 'コメントを削除しますか？'} %>
+               <% end %>
+             </div><br>
+           &nbsp;&nbsp;&nbsp;
+         <%= post_comment.comment %><br>
+       </div>
+         <% end %>
       </div>
-      <% end %>
-      </div>
-
     </div>
 
 
@@ -94,10 +73,9 @@
         <h5><%= safe_join(@recipe.ingredients.split("\n"),tag(:br)) %></h5>
       </div>
       <div class="border border-dark py-3 pl-3", style="background-color: #c7dc68;"><u><h3>作り方</h3></u>
-      <%= safe_join(@recipe.explanation.split("\n"),tag(:br)) %>
+        <%= safe_join(@recipe.explanation.split("\n"),tag(:br)) %>
       </div>
     </div>
   </div>
-
 
 </div>

@@ -71,6 +71,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  # config.web_console.whitelisted_ips = '133.203.196.128'
+
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
   config.hosts << "7f4c654db8324d4d92fd55949f1f369d.vfs.cloud9.ap-northeast-1.amazonaws.com"

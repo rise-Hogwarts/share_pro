@@ -6,7 +6,7 @@ def guest
     member.password = SecureRandom.alphanumeric(10)
     member.save
     sign_in member
-    redirect_to recipes_path
+    redirect_to root_path
 end
 
   private
