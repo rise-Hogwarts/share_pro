@@ -13,11 +13,27 @@
         不足しがちなたんぱく質を普段の食事に取り入れる事ができるので、<br>
         筋トレが好きな方やダイエットをしている方以外の方にもオススメです！！</h5>
     </div>
-
-
   </div>
+
   <div class="row my-5">
-    <div class="col-7 ml-5 pt-3 text-center border-top border-bottom border-info", style="background-color: lightcyan;">
+    <% if member_signed_in? %>
+  <div class="col-3 mx-auto h-50 py-1 bg-white border border-warning text-center">
+    <%= link_to my_recipe_path do %>
+      <p class="btn btn-success btn-lg w-100 font-weight-bold rounded text-light px-5 py-3 mt-2"><i class="fas fa-user-tie"></i>
+      &nbsp;&nbsp;&nbsp;マ イ ペ ー ジ</p>
+    <% end %><br>
+    <%= link_to new_recipe_path do %>
+      <p class="btn btn-warning btn-lg w-100 font-weight-bold rounded text-dark px-5 py-3"><i class="fas fa-utensils"></i>
+      &nbsp;&nbsp;&nbsp;レ シ ピ 投 稿</p>
+    <% end %><br>
+    <%= link_to goods_member_path(current_member) do %>
+      <p class="btn btn-danger btn-lg w-100 font-weight-bold rounded text-light px-5 py-3"><i class="fas fa-utensils"></i>
+      &nbsp;&nbsp;&nbsp;お 気 に 入 り</p>
+    <% end %>
+  </div>
+  <% end %>
+
+    <div class="col-6 mx-auto pt-3 text-center border border-info", style="background-color: lightcyan;">
       <h4 class="mt-2"><u>share_proを利用するにあたって</u></h4>
       <p class="text-info font-weight-bold mt-3">&nbsp;&nbsp;&nbsp;&nbsp;実際に体づくりを健康的に行うためにはたんぱく質以外の栄養素<br>（糖質、脂質、ビタミン、ミネラルなど） も
          バランスよく取る必要が
@@ -26,6 +42,7 @@
          さまざまな料理の中の一つのアイデアとして参考にしましょう。
       </p>
     </div>
+
   </div>
   <div class="row py-2 w-75 border border-success bg-light mx-auto">
     <h4 class="mx-auto font-weight-bold text-success">新 着 レ シ ピ</h4>
@@ -45,21 +62,6 @@
     </tbody>
     <% end %>
   </table>
-  <% if member_signed_in? %>
-  <div class="col ml-5 h-50 py-3 border table-active">
-    <%= link_to my_recipe_path do %>
-      <p class="btn btn-success btn-lg font-weight-bold rounded text-light px-5 py-3 mt-2"><i class="fas fa-user-tie"></i>
-      &nbsp;&nbsp;&nbsp;マ イ ペ ー ジ</p>
-    <% end %><br>
-    <%= link_to new_recipe_path do %>
-      <p class="btn btn-warning btn-lg font-weight-bold rounded text-dark px-5 py-3"><i class="fas fa-utensils"></i>
-      &nbsp;&nbsp;&nbsp;レ シ ピ 投 稿</p>
-    <% end %><br>
-    <%= link_to goods_member_path(current_member) do %>
-      <p class="btn btn-danger btn-lg font-weight-bold rounded text-light px-5 py-3"><i class="fas fa-utensils"></i>
-      &nbsp;&nbsp;&nbsp;お 気 に 入 り</p>
-    <% end %>
-  </div>
-  <% end %>
+
   </div>
 </div>
