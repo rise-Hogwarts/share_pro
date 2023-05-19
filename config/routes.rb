@@ -43,7 +43,7 @@ namespace :admin do
     resources :post_comments, only: [:destroy]
   end
   resources :members, only: [:index, :show, :update]
-  resources :genres, only: [:index, :create, :destroy]
+  resources :genres, only: [:index, :create, :update, :destroy]
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
