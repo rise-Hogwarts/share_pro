@@ -2,3 +2,23 @@
   background-image: url("../../assets/images/meat.dish.jpg");
   background-size: cover;
 }
+
+/*.recipes-tbody {*/
+/*  height: 210px;*/
+/*  width: 70%;*/
+/*}*/
+
+.recipes{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.recipe-table{
+  width: 75%;
+}
+
+.genre-table{
+  width: 17%;
+  margin-left: 5%;
+}

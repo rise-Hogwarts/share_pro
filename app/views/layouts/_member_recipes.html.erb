@@ -1,7 +1,7 @@
 <!--member_recipe_indexの部分テンプレート-->
 
 <% recipes.each do |recipe| %>
-  <tbody class="h-100">
+  <tbody>
     <tr>
       <td class="col-2 pl-3 py-3"><%= link_to recipe_path(recipe.id) do %><%= image_tag recipe.image, size: "200x170", class:"rounded" %><% end %></td>
       <td class="py-3"><%= link_to recipe_path(recipe.id) do %><h4 class="font-weight-bold mb-4", style="color: salmon;"><%= "〜 #{recipe.name.truncate(30)} 〜" %></h4><% end %>

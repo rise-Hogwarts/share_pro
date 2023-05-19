@@ -28,13 +28,14 @@
     </div>
   </div>
 
-  <div class="row mb-5">
-    <div class="col-1"></div>
-      <table class="table col-8 mt-3 border", style="background-color: #f0fff0;">
+  <div class="recipes">
+    <div class="recipe-table">
+      <table class="table mt-3 border", style="background-color: #f0fff0;">
         <%= render 'layouts/member_recipes', recipes: @recipes %>
       </table>
-    <div class="col mx-5 pl-5 mt-3 border-left border-secondary">
-      <table class="table table-bordered table-responsive", style="background-color: #fdeff2;">
+    </div>
+    <div class="genre-table">
+      <table class="table table-bordered mt-3 table-responsive", style="background-color: #fdeff2;">
         <thead>
           <tr>
             <th class="text-center", style="background-color: #e8d3c7;">〜ジャンルで絞り込む〜</th>
