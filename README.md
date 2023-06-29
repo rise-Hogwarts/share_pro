@@ -14,14 +14,14 @@
 
 
 ### ターゲットユーザ
-・筋トレが好きな人<br>
-・ダイエットをしている人
+- 筋トレが好きな人<br>
+- ダイエットをしている人
 
 
 ### 主な利用シーン
-・食事制限をしていて同じ味に飽きた時<br>
-・ダイエットで何を食べればいいかわからない時<br>
-・自分でおすすめの調理法を紹介・共有したいとき
+- 食事制限をしていて同じ味に飽きた時<br>
+- ダイエットで何を食べればいいかわからない時<br>
+- 自分でおすすめの調理法を紹介・共有したいとき
 
 
 ## 設計書
@@ -31,9 +31,8 @@ https://docs.google.com/spreadsheets/d/1vj94GBinTeouIaLU2rdf7LQ-wuqJriCL_cAyk7wc
 
 ## 開発環境
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- 言語：HTML,CSS,Ruby
 - フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery
 - IDE：Cloud9
 
 ## 使用素材
