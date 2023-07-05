@@ -30,7 +30,7 @@ https://docs.google.com/spreadsheets/d/1vj94GBinTeouIaLU2rdf7LQ-wuqJriCL_cAyk7wc
 
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Linux(Amazon Linux 2)
 - 言語：HTML,CSS,Ruby
 - フレームワーク：Ruby on Rails
 - IDE：Cloud9
