@@ -3,21 +3,22 @@
 
       <!--<div class="w-100 py-5", style="background-image:url(<%#= asset_path "meat.dish.jpg" %>)" />-->
    <div class="body">
-
-    <div class="col-7 mx-auto text-center text-light py-5">
-      <h2 class="mx-auto border-top border-bottom border-warning font-weight-bold py-3">
+   <div class="body-on">
+    <div class="col-md-7 mx-md-auto text-center text-light py-md-5">
+      <h2 class="mx-md-auto border-top border-bottom border-warning font-weight-bold py-md-3">
         Welcome to share_pro</h2><br>
-        <h5 class="font-weight-bold mb-4">
+        <h5 class="font-weight-bold font-14 mb-4">
         シェアプロではユーザーが投稿したタンパク質が摂れる料理を見る事が出来ます。</h5>
-        <h5 class="font-weight-bold">
-        不足しがちなたんぱく質を普段の食事に取り入れる事ができるので、<br>
+        <h5 class="font-weight-bold font-14">
+        不足しがちなたんぱく質を普段の食事に取り入れる事ができるので、<br class="erase">
         筋トレが好きな方やダイエットをしている方以外の方にもオススメです！！</h5>
     </div>
+  </div>
   </div>
 
   <div class="row my-5">
     <% if member_signed_in? %>
-  <div class="col-3 mx-auto h-50 py-1 bg-white border border-warning text-center">
+  <div class="col-md-3 mx-auto h-50 py-1 bg-white border border-warning text-center">
     <%= link_to my_recipe_path do %>
       <p class="btn btn-success btn-lg w-100 font-weight-bold rounded text-light px-5 py-3 mt-2"><i class="fas fa-user-tie"></i>
       &nbsp;&nbsp;&nbsp;マ イ ペ ー ジ</p>
@@ -33,12 +34,11 @@
   </div>
   <% end %>
 
-    <div class="col-6 mx-auto pt-3 text-center border border-info", style="background-color: lightcyan;">
+    <div class="col-md-6 mx-auto pt-3 text-center border border-info", style="background-color: lightcyan;">
       <h4 class="mt-2"><u>share_proを利用するにあたって</u></h4>
-      <p class="text-info font-weight-bold mt-3">&nbsp;&nbsp;&nbsp;&nbsp;実際に体づくりを健康的に行うためにはたんぱく質以外の栄養素<br>（糖質、脂質、ビタミン、ミネラルなど） も
-         バランスよく取る必要が
-         あります。</p><br>
-         <p class="text-info font-weight-bold">こちらのサイトでは、たんぱく質が取れるレシピを投稿・閲覧できるものなので<br>
+      <p class="text-info font-14 font-weight-bold mt-3">&nbsp;&nbsp;&nbsp;&nbsp;実際に体づくりを健康的に行うためにはたんぱく質以外の栄養素<br class="erase">（糖質、脂質、ビタミン、ミネラルなど） も
+         バランスよく取る必要があります。</p><br>
+         <p class="text-info font-14 font-weight-bold">こちらのサイトでは、たんぱく質が取れるレシピを投稿・閲覧できるものなので<br class="erase">
          さまざまな料理の中の一つのアイデアとして参考にしましょう。
       </p>
     </div>

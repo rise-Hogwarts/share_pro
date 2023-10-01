@@ -11,25 +11,26 @@
   </head>
 
   <body>
-    <div class="container-fluid sticky-top pl-3", style="background-color: sienna;">
+    <div class="container-fluid sticky-top pl-md-3", style="background-color: sienna;">
       <header>
-        <div class="row ml-3 pt-2 text-light">タンパク質を求める方に向けたレシピ投稿サイト</div>
+        <div class="erase row ml-3 pt-2 text-light">タンパク質を求める方に向けたレシピ投稿サイト</div>
         <div class="row pb-2">
-          <div class="col-3">
+          <div class="col-md-3">
             <h1 class="ml-5 text-light"><i class="fas fa-utensils"></i><u class="mx-3">share-pro</u><i class="fas fa-utensils"></i></h1>
           </div>
-          <div class="col font-weight-bold text-light">
-            <nav class="navbar navbar-expand-lg navbar-dark">
-            <ul class="navbar-nav ml-auto">
+          <div class="col-md-9 font-weight-bold text-light">
+            <!--<nav class="navbar navbar-expand-lg navbar-dark">-->
+            <ul>
+
             <% if member_signed_in? %>
             <li class="nav-item">
-                <%= link_to "ホーム画面", root_path, class:'mr-4 text-light' %>
+                <%= link_to "ホーム画面", root_path, class:'mr-4' %>
             </li>
-            /
+              /
             <li class="nav-item">
                 <%= link_to "レシピ一覧", recipes_path, class:'mr-4 ml-4 text-light' %>
             </li>
-            /
+              /
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class:'mr-5 ml-3 text-light' %>
             </li>
@@ -37,40 +38,39 @@
             <li class="nav-item">
               <%= link_to "会員一覧", admin_members_path, class:'mr-4 text-light' %>
             </li>
-            /
+              /
             <li class="nav-item">
               <%= link_to "レシピ一覧", admin_recipes_path, class:'mx-4 text-light' %>
             </li>
-            /
+              /
             <li class="nav-item">
               <%= link_to "ジャンル追加", admin_genres_path, class:'mx-4 text-light' %>
             </li>
-            /
+              /
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:'mr-5 ml-4 text-light' %>
             </li>
             <% else %>
-            <li class="nav-item">
-              <%= link_to "ホーム画面", root_path, class:'mr-3 text-light' %>
+            <li>
+              <%= link_to "ホーム画面", root_path, class:'mr-md-3 text-light' %>
             </li>
-            /
-            <li class="nav-item border-right border-light">
-              <%= link_to "レシピ一覧", recipes_path, class:'ml-3 mr-5 text-light' %>
+              /
+            <li class="border-right">
+              <%= link_to "レシピ一覧", recipes_path, class:'ml-md-3 mr-md-5 mr-2 text-light' %>
             </li>
-            <li class="nav-item">
-              <%= link_to "新規登録", new_member_registration_path, class:'mr-2 ml-5 text-light' %>
+            <li>
+              <%= link_to "新規登録", new_member_registration_path, class:'mr-md-2 ml-md-5 text-light' %>
             </li>
-            /
-            <li class="nav-item">
-              <%= link_to "ログイン", new_member_session_path, class:'mx-2 text-light' %>
+              /
+            <li>
+              <%= link_to "ログイン", new_member_session_path, class:'mx-md-2 text-light' %>
             </li>
-            /
-            <li class="nav-item">
-              <%= link_to 'ゲストログイン', '/guest_sign_in' , method: :post, class:"mx-2 text-light" %>
+              /
+            <li>
+              <%= link_to 'ゲストログイン', '/guest_sign_in' , method: :post, class:"mx-md-2 text-light" %>
             </li>
             <% end %>
             </ul>
-            </nav>
           </div>
           </div>
       </header>
