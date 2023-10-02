@@ -3,7 +3,7 @@
 
       <!--<div class="w-100 py-5", style="background-image:url(<%#= asset_path "meat.dish.jpg" %>)" />-->
    <div class="body">
-   <div class="body-on">
+   <div class="body-image">
     <div class="col-md-7 mx-md-auto text-center text-light py-md-5">
       <h2 class="mx-md-auto border-top border-bottom border-warning font-weight-bold py-md-3">
         Welcome to share_pro</h2><br>
@@ -47,18 +47,18 @@
 
   </div>
   <!--<div class="row py-2 w-75 border border-success mb-2 bg-light mx-auto">-->
-  <div class="new-recipe">
+  <div class="new-recipe border border-success">
     <h4 class="text-secondary">新 着 レ シ ピ</h4>
   </div>
   <div class="row">
-  <table class="table col-md-9 mx-auto", style="background-color: #f0fff0;">
+  <table class="table md-table xs-table", style="background-color: #ffffff;">
     <% @recipes.last(6).reverse_each do |recipe| %>
     <tbody>
       <tr>
-        <td class="recipe-image block col-md-2 pl-md-3 py-md-3"><%= link_to recipe_path(recipe.id) do %><%= image_tag recipe.image, class:"rounded" %><% end %></td>
-        <td class="block py-md-3"><%= link_to recipe_path(recipe.id) do %><h4 class="font-weight-bold mb-md-4", style="color: salmon;">&nbsp;&nbsp;&nbsp;<%= "〜 #{recipe.name.truncate(30)} 〜" %></h4><% end %>
-          <p class="font-weight-bold lead font-14", style="color: maroon;">&nbsp;<%= "「#{recipe.genre.name}」のレシピ" %>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;<%= "たんぱく質量 (#{recipe.protein}g)" %></p>
-          <p class="text-secondary mt-md-5 font-14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;<%= recipe.member.name %>&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;<%= recipe.created_at.strftime('%Y / %m / %d') %>
+        <td class="align-middle recipe-image col-md-2 pl-md-3 py-md-3"><%= link_to recipe_path(recipe.id) do %><%= image_tag recipe.image, class:"rounded" %><% end %></td>
+        <td class="py-md-3"><%= link_to recipe_path(recipe.id) do %><h4 class="font-weight-bold font-17 mb-md-4", style="color:salmon ;">&nbsp;&nbsp;&nbsp;<%= "〜 #{recipe.name.truncate(30)} 〜" %></h4><% end %>
+          <p class="font-weight-bold block lead font-14", style="color: maroon;">&nbsp;<%= "「#{recipe.genre.name}」のレシピ" %>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;<%= "たんぱく質量 (#{recipe.protein}g)" %></p>
+          <p class="text-secondary block mt-md-5 font-14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;<%= recipe.member.name %>&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;<%= recipe.created_at.strftime('%Y / %m / %d') %>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbs-up"></i><%= "#{recipe.goods.count}いいね" %></p>
         </td>
       </tr>
