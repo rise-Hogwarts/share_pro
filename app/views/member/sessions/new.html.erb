@@ -1,21 +1,21 @@
-<div class="container py-5 my-5 font-weight-bold">
+<div class="container py-5 my-md-5 font-weight-bold">
 
   <div class="row w-50 mx-auto pt-5 mb-2 border-top border-warning rounded-pill">
-    <h1 class="mx-auto", style="color: sienna;"><i class="fas fa-utensils"></i><u class="mx-3">share-pro</u><i class="fas fa-utensils"></i></h1>
+    <h1 class="mx-auto erase", style="color: sienna;"><i class="fas fa-utensils"></i><u class="mx-3">share-pro</u><i class="fas fa-utensils"></i></h1>
   </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="row mb-4">
-    <div class="col-5 mx-auto">
+    <div class="col-md-5 col-8 mx-auto xs-center">
       <%= f.label :メールアドレス %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-100 h-75 border rounded" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-100 h-75 border border-secondary rounded" %>
     </div>
   </div>
 
   <div class="row mb-4">
-    <div class="col-5 mx-auto">
+    <div class="col-md-5 col-8 mx-auto xs-center">
       <%= f.label :パスワード %><br />
-      <%= f.password_field :password, autocomplete: "current-password", class:"w-100 h-75 border rounded" %>
+      <%= f.password_field :password, autocomplete: "current-password", class:"w-100 h-75 border border-secondary rounded" %>
     </div>
   </div>
 
@@ -25,7 +25,7 @@
     </div>
 <% end %>
 
-  <div class="mx-auto">
+  <div class="mx-auto xs-center">
     <%= render "member/shared/links" %>
   </div>
   </div>

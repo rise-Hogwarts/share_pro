@@ -1,40 +1,40 @@
-<div class="container py-5 my-5 font-weight-bold">
+<div class="container py-md-5 my-5 font-weight-bold">
 
-  <div class="row w-50 mx-auto pt-5 mb-2 border-top border-warning rounded-pill">
-    <h1 class="mx-auto", style="color: sienna;"><i class="fas fa-utensils"></i><u class="mx-3">share-pro</u><i class="fas fa-utensils"></i></h1>
+  <div class="row w-50 mx-auto pt-md-5 mb-2 border-top border-warning rounded-pill">
+    <h1 class="mx-auto erase", style="color: sienna;"><i class="fas fa-utensils"></i><u class="mx-3">share-pro</u><i class="fas fa-utensils"></i></h1>
   </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "member/shared/error_messages", resource: resource %>
 
   <div class="row mb-4">
-    <div class="col-5 mx-auto">
+    <div class="col-md-5 col-8 mx-auto xs-center">
       <%= f.label :ユーザ名 %><br />
-      <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"w-100 h-50 border rounded" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"w-100 h-50 border border-dark rounded" %>
     </div>
   </div>
 
   <div class="row mb-4">
-    <div class="col-5 mx-auto">
+    <div class="col-md-5 col-8 mx-auto xs-center">
       <%= f.label :メールアドレス %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-100 h-50 border rounded" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-100 h-50 border border-dark rounded" %>
     </div>
   </div>
 
   <div class="row mb-4">
-    <div class="col-5 mx-auto">
+    <div class="col-md-5 col-8 mx-auto xs-center">
       <%= f.label :パスワード %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %>文字以上)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class:"w-100 h-50 border rounded" %>
+      <%= f.password_field :password, autocomplete: "new-password", class:"w-100 h-50 border border-dark rounded" %>
     </div>
   </div>
 
   <div class="row mb-4">
-    <div class="col-5 mx-auto">
+    <div class="col-md-5 col-8 mx-auto xs-center">
       <%= f.label :パスワード確認用 %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"w-100 h-50 border rounded" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"w-100 h-50 border border-dark rounded" %>
     </div>
   </div>
 
@@ -44,7 +44,7 @@
     </div>
 <% end %>
 
-  <div class="mx-auto">
+  <div class="mx-auto xs-center">
 <%= render "member/shared/links" %>
   </div>
   </div>

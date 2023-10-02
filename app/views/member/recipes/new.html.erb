@@ -1,9 +1,9 @@
-<div class="container-fluid pb-5">
+<div class="container-fluid pb-5 xs-center", style="background-color: lightyellow;">
   <div class="row py-3", style="background-color: brown;">
-    <h1 class="col-5 mt-5 text-light text-center font-weight-bold mx-auto mb-4">レ シ ピ 投 稿 ペ ー ジ</h1>
+    <h1 class="col-md-5 mt-md-5 col-12 py-3 text-light text-center font-weight-bold mx-auto mb-4 font-17", style="background-color: brown;">〜　レ シ ピ 投 稿 ペ ー ジ　〜</h1>
   </div>
   <div class="row", style="background-color: brown;">
-    <h4 class="pb-5 mx-auto text-light">あなたのおすすめのタンパク質料理を投稿して共有しましょう！！</h4>
+    <h4 class="pb-5 mx-auto text-light erase">あなたのおすすめのタンパク質料理を投稿して共有しましょう！！</h4>
   </div>
 
 
@@ -11,21 +11,21 @@
 <%= form_with model: @recipe, url: recipes_path, method: :post do |f| %>
 
   <div class="row lead font-weight-bold pl-5 ml-5 mt-5">
-    <div class="col-5">
-      <%= f.label :画像 %><br>
+    <div class="col-md-5">
+      <%= f.label :画像, class:"font-17" %><br>
       <label class="border border-dark px-3 py-3 mb-5 rounded-pill btn btn-warning">
-        <span class="font-weight-bold lead"><i class="fas fa-images"></i>&nbsp;&nbsp;レ シ ピ 画 像 を 選 択 し て く だ さ い</span>
+        <span class="font-weight-bold lead font-14"><i class="fas fa-images"></i>&nbsp;&nbsp;レ シ ピ 画 像 を 選 択 し て く だ さ い</span>
       <%= f.file_field :image, accept: "image/*", style:"display:none;" %>
       </label><br>
-      <%= f.label :レシピ名 %><br>
+      <%= f.label :レシピ名, class:"font-17" %><br>
       <%= f.text_field :name, class:"mb-5 w-75" %><br>
-      <%= f.label :たんぱく質量 %><br>
+      <%= f.label :たんぱく質量, class:"font-17" %><br>
       <%= f.text_field :protein, class:"mb-5 w-75" %>
       g<br>
-      <%= f.label :ジャンル選択 %><br>
+      <%= f.label :ジャンル選択, class:"font-17" %><br>
       <%= f.collection_select(
       :genre_id, Genre.all, :id, :name,
-      {prompt: "ジャンルを選択してください"}, {class: 'form-control border border-dark w-75'}) %><br>
+      {prompt: "ジャンルを選択してください"}, {class: 'form-control border border-dark w-75 mx-auto mx-md-0'}) %><br>
 
 
       <% if @recipe.errors.any? %>  <!--エラーメッセージ-->
@@ -35,10 +35,10 @@
 
 
     </div>
-    <div class="col-6">
-      <%= f.label :材料 %><br>
+    <div class="col-md-6 col-10 mx-auto">
+      <%= f.label :材料, class:"font-17" %><br>
       <%= f.text_area :ingredients, class:"w-100 h-50" %><br>
-      <%= f.label :作り方 %><br>
+      <%= f.label :作り方, class:"font-17" %><br>
       <%= f.text_area :explanation, class:"w-100 h-75" %>
     </div>
   </div>
@@ -48,7 +48,7 @@
 
 
 
-  <div class="my-2 py-5"></div>
+  <div class="my-2 py-md-5"></div>
   <div class="py-5"></div>
   <div class="row py-5">
     <%= f.submit "レ シ ピ を 投 稿 す る", class:'btn btn-success btn-lg mx-auto px-5 py-3 rounded-pill' %>
