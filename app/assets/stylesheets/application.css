@@ -13,7 +13,12 @@
  *= require_tree .
  *= require_self
  */
-.body {
-  background-image: url("../assets/images/meat.dish.jpg");
-  background-color: red;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-item{
+  height: 500px;
 }

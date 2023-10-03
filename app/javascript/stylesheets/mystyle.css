@@ -19,10 +19,27 @@
     height: 170px;
   }
 
+  .show-img img{
+    width: 535px;
+    height: 400px;
+  }
+
+  .md-table{  /*768px以上時　レシピ一覧*/
+    width: 800px;
+    margin: 0 auto;
+    border: 1px solid green;
+  }
+
 .recipes{
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.recipe-title{
+  background-color: #fff3b8;
+  height: 100px;
+  width: 100%;
 }
 
 .recipe-table{
@@ -34,9 +51,8 @@
   margin-left: 5%;
 }
 
-
 .new-recipe{     /*新着レシピ　タイトル*/
-  width: 80%;
+  width: 800px;
   margin: 0 auto;
   border: 1px solid #f0fff0;
   background-color: white;
@@ -44,18 +60,51 @@
 }
 
 @media screen and (max-width:425px) {
+  /*ヘッダー*/
+  ul{
+    width: 100%;
+    margin-left: 0;
+    margin: 0 auto;
+    font-size: 10px;
+  }
+
+  li{
+    margin: 0 4px;
+  }
+
+  /*ホーム画面*/
   .body{
     width: 100%;
     height: 280px;
   }
 
-  .body-on{
+  .body-image{
     width: 100%;
     height: 280px;
     padding-top: 50px;
     background-color: rgba( 0, 0, 0, 0.1);
   }
 
+  .new-recipe{
+    margin-left: initial;
+    width: 100%;
+  }
+
+  /*レシピ一覧*/
+  .recipes{
+    display: block;
+  }
+
+  .genre-table{
+    display: initial;
+  }
+
+  .flex-wrap{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /*要素の編集*/
   .row{
     display: initial;
   }
@@ -68,28 +117,46 @@
     font-size: 14px;
   }
 
-  ul{
-    width: 100%;
-    margin-left: 0;
-    margin: 0 auto;
+  .font-17{
+    font-size: 17px;
+  }
+
+  .font-10{
     font-size: 10px;
   }
 
-  li{
-    margin: 0 4px;
-  }
-
-  .new-recipe{
-    margin-left: initial;
-    width: 100%;
+  .initial{
+    display: initial;
   }
 
   .block{
     display: block;
   }
 
+  .xs-center{
+    text-align: center;
+  }
+
   img{
-    width: 100px;
-    height: 80px;
+    width: 120px;
+    height: 100px;
+  }
+
+  /*レシピ詳細*/
+  .show-img{
+    width: 100%;
+    height: 240px;
+    text-align: center;
+    line-height: 240px;
+    background-color: white;
+  }
+
+  .show-img img{
+    width: 250px;
+    height: 180px;
+  }
+
+  .xs-table{
+    width: 100%;
   }
 }
