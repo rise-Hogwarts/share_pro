@@ -1,35 +1,35 @@
-<div class="container-fluid pt-5", style="background-color: lightgoldenrodyellow;">
+<div class="container-fluid pt-md-5", style="background-color: lightgoldenrodyellow;">
 
   <div class="row">
-    <h3 class="font-weight-bold mx-auto rounded-pill px-5 py-4 mb-5", style="background-color: #fff352;">
+    <h3 class="font-weight-bold mx-auto rounded-pill px-md-5 py-md-4 py-2 mb-5 xs-center font-17", style="background-color: #fff352;">
       <%= "〜 #{@recipe.name}" %>
       のレシピ 〜
     </h3>
   </div>
 
-  <div class="row px-5">
-    <div class="col-5 mx-auto">
+  <div class="row px-md-5">
+    <div class="col-md-5 mx-md-auto">
       <%= render 'layouts/recipe_show', recipe: @recipe %><!--レシピと投稿者の情報-->
         <div class="pt-3 border-top border-dark w-100", style="display:inline-flex">
           <% if member_signed_in? %>
             <% if @recipe.good_by?(current_member) %>
               <%= link_to recipe_goods_path(@recipe), method: :delete do %>
-                <h4 class="mb-4 px-2 btn btn-warning btn-sm">
+                <h4 class="mb-4 px-2 btn btn-warning btn-sm text-nowrap py-3">
                   <i class="fas fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
                 </h4>
               <% end %>
             <% else %>
               <%= link_to recipe_goods_path(@recipe), method: :post do %>
-                <h4 class="mb-4 px-2 btn btn-sm btn-light border border-dark">
+                <h4 class="mb-4 px-2 btn btn-sm btn-light border border-dark text-nowrap py-3">
                   <i class="far fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
                 </h4>
               <% end %>
             <% end %>
               <p class="text-secondary pt-1">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※いいねを押した投稿はホーム画面から見る事ができます
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※いいねを押した投稿はホーム画面の"お気に入り"から閲覧できます
               </p>
           <% else %>
-            <p class="mb-4 px-2 bg-light border border-dark">
+            <p class="mb-4 px-2 bg-light border border-dark text-nowrap py-3">
               <i class="far fa-thumbs-up"></i> <%= @recipe.goods.count %> いいね
             </p>
         <% end %>
@@ -38,7 +38,7 @@
      <% if member_signed_in? %>
        <%= form_with model: [@recipe, @post_comment] do |f| %>
          <%= f.text_area :comment, rows: '1', placeholder: "コメントをここに", class:"h-25 w-75" %>
-         <%= f.submit "コメント️", data: { confirm: 'コメントを送信しますか？'}, class:"btn btn-primary btn-sm mb-4 px-3" %>
+         <%= f.submit "コメント️", data: { confirm: 'コメントを送信しますか？'}, class:"btn btn-primary btn-sm mb-4 px-md-3" %>
        <% end %>
      <% end %>
 
@@ -68,7 +68,7 @@
     </div>
 
 
-    <div class="col-6 mx-auto">    <!--右上 材料-->
+    <div class="col-md-6 mx-auto">    <!--右上 材料-->
       <div class="border border-dark py-3 pl-3 mb-5", style="background-color: #aacf53;"><u><h3>材料</h3></u>
         <h5><%= safe_join(@recipe.ingredients.split("\n"),tag(:br)) %></h5>
       </div>

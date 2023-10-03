@@ -1,16 +1,17 @@
 <!--レシピ詳細(recipe.show)の部分テンプレート-->
-
-<%= image_tag recipe.image, size: "550x400", class:'border border-dark mb-4' %>
+<div class="show-img">
+  <%= image_tag recipe.image, class:'border border-dark mb-4' %>
+</div>
       <table class="table table-lg mb-3", style="background-color: white;">
         <tbody>
           <tr>
-            <td class="col-4"><h6 class="font-weight-bold mt-2 border-right border-secondary">　レシピ名</h6></td><td class="col-8 align-middle"><%= recipe.name %></td>
+            <td class="col-md-4 col-4"><h6 class="font-weight-bold mt-2 border-right border-secondary font-14">　レシピ名</h6></td><td class="col-md-8 align-middle"><%= recipe.name %></td>
           </tr>
           <tr>
-            <td class="col-4"><h6 class="font-weight-bold mt-2 border-right border-secondary">　ジャンル</h6></td><td class="col-8 align-middle"><%= recipe.genre.name %></td>
+            <td class="col-md-4 col-4"><h6 class="font-weight-bold mt-2 border-right border-secondary font-14">　ジャンル</h6></td><td class="col-md-8 align-middle"><%= recipe.genre.name %></td>
           </tr>
           <tr>
-            <td class="col-4"><h6 class="font-weight-bold mt-2 border-right border-secondary">　たんぱく質量</h6></td><td class="col-8 align-middle"><%= "#{recipe.protein}グラム" %></td>
+            <td class="col-md-4 col-4"><h6 class="font-weight-bold mt-2 border-right border-secondary text-nowrap font-14">　たんぱく質量</h6></td><td class="col-md-8 align-middle"><%= "#{recipe.protein}グラム" %></td>
           </tr>
         </tbody>
       </table>
