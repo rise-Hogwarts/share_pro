@@ -99,6 +99,10 @@
     display: initial;
   }
 
+  .recipe-table{
+    width: 100%;
+  }
+
   .flex-wrap{
     display: flex;
     flex-wrap: wrap;
