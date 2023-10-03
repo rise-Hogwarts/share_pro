@@ -57,7 +57,7 @@
     <tbody>
       <tr>
         <td class="align-middle recipe-image col-md-2 pl-md-3 py-md-3"><%= link_to recipe_path(recipe.id) do %><%= image_tag recipe.image, class:"rounded" %><% end %></td>
-        <td class="py-md-3"><%= link_to recipe_path(recipe.id) do %><h4 class="font-weight-bold font-17 mb-md-4", style="color:salmon ;">&nbsp;&nbsp;&nbsp;<%= "〜 #{recipe.name.truncate(30)} 〜" %></h4><% end %>
+        <td class="py-md-3"><%= link_to recipe_path(recipe.id) do %><h4 class="font-weight-bold text-nowrap font-17 mb-md-4", style="color:salmon ;">&nbsp;&nbsp;&nbsp;<%= "〜 #{recipe.name.truncate(30)} 〜" %></h4><% end %>
           <p class="font-weight-bold block lead font-14", style="color: maroon;">&nbsp;<%= "「#{recipe.genre.name}」のレシピ" %>&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;<%= "たんぱく質量 (#{recipe.protein}g)" %></p>
           <p class="text-secondary block mt-md-5 font-14">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;<%= recipe.member.name %>&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-alt"></i>&nbsp;<%= recipe.created_at.strftime('%Y / %m / %d') %>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-thumbs-up"></i><%= "#{recipe.goods.count}いいね" %></p>
