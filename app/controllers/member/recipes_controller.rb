@@ -1,4 +1,5 @@
 class Member::RecipesController < ApplicationController
+  before_action :check_sign_in, only: [:new]
 
   def index
     if params[:latest]
@@ -27,12 +28,7 @@ class Member::RecipesController < ApplicationController
   end
 
   def new
-   if member_signed_in?
-     @recipe = Recipe.new   #ユーザーがログインしているときはフォームを表示させる
-   else
-    redirect_to root_path   #アドレスバーにURLを直接入力されてもホーム画面に戻す
-   end
-
+    @recipe = Recipe.new
   end
 
   def create
@@ -50,6 +46,12 @@ class Member::RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:member_id, :image, :name, :genre_id, :explanation, :ingredients, :protein)
+  end
+
+  def check_sign_in
+    unless member_signed_in?
+      redirect_to root_path
+    end
   end
 
 end

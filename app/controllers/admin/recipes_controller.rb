@@ -1,4 +1,6 @@
 class Admin::RecipesController < ApplicationController
+  before_action :check_sign_in
+
   def index
     if params[:latest]
      @recipes = Recipe.latest.page(params[:page]).per(7)
@@ -28,6 +30,15 @@ class Admin::RecipesController < ApplicationController
     recipe = Recipe.find(params[:id])
     recipe.destroy
     redirect_to admin_recipes_path
+  end
+
+
+  private
+
+  def check_sign_in
+    unless admin_signed_in?
+      redirect_to root_path
+    end
   end
 
 end

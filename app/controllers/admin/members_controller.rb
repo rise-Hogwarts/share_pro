@@ -1,6 +1,6 @@
 class Admin::MembersController < ApplicationController
+  before_action :check_sign_in
   def index
-    admin = Udmin.gind
     @members = Member.all.page(params[:page]).per(20)
   end
 
@@ -19,6 +19,12 @@ class Admin::MembersController < ApplicationController
 
   def member_params
     params.require(:member).permit(:is_deleted)
+  end
+
+  def check_sign_in
+    unless admin_signed_in?
+      redirect_to root_path
+    end
   end
 
 end

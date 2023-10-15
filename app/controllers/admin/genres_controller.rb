@@ -1,4 +1,6 @@
 class Admin::GenresController < ApplicationController
+  before_action :check_sign_in
+
   def index
     @genre = Genre.new
     @genres = Genre.all
@@ -28,6 +30,12 @@ class Admin::GenresController < ApplicationController
 
   def genre_params
     params.require(:genre).permit(:name)
+  end
+
+  def check_sign_in
+    unless admin_signed_in?
+      redirect_to root_path
+    end
   end
 
 
