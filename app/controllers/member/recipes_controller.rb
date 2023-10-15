@@ -27,7 +27,12 @@ class Member::RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+   if member_signed_in?
+     @recipe = Recipe.new   #ユーザーがログインしているときはフォームを表示させる
+   else
+    redirect_to root_path   #アドレスバーにURLを直接入力されてもホーム画面に戻す
+   end
+
   end
 
   def create
