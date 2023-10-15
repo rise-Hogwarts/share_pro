@@ -1,12 +1,16 @@
 class Member::HomesController < ApplicationController
-  before_action :set_user, only: [:goods]
+  # before_action :set_user, only: [:goods]
 
   def top
     @recipes = Recipe.all
   end
 
   def my_recipe
-    @recipes = current_member.recipes.page(params[:page]).per(7)
+    if member_signed_in?
+      @recipes = current_member.recipes.page(params[:page]).per(7)
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy
@@ -16,9 +20,9 @@ class Member::HomesController < ApplicationController
   end
 
 
-private
-  def set_user
-    @member = Member.find(params[:id])
-  end
+# private
+#   def set_user
+#     @member = Member.find(params[:id])
+#   end
 
 end

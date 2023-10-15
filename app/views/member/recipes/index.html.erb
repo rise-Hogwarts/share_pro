@@ -12,11 +12,15 @@
     <div class="col-md-1"></div>
     <div class="col-md-3 mr-md-5 mt-md-4 xs-center">   <!--検索フォーム-->
       <%= form_tag(recipes_path, :method => "get") do %>
+
+
+
     <div style="display:inline-flex">
-      <form>
+
         <%= text_field_tag :search, params[:search], placeholder: "キーワード検索", class: "form-control col-md-11" %>
-        <%= submit_tag "検索", :name => nil, class:"btn border btn-success btn-sm px-3 font-weight-bold" %>
-      </form>
+        <%= submit_tag "検索", class:"btn border btn-success btn-sm px-3 font-weight-bold" %>
+
+
     </div>
       <% end %>
     </div>

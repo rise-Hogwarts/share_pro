@@ -1,5 +1,6 @@
 class Admin::MembersController < ApplicationController
   def index
+    admin = Udmin.gind
     @members = Member.all.page(params[:page]).per(20)
   end
 
