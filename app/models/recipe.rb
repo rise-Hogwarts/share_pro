@@ -3,7 +3,7 @@ class Recipe < ApplicationRecord
   validates :genre_id, presence: true
   validates :ingredients, presence: true
   validates :explanation, presence: true
-  validates :protein, presence: true
+  validates :protein, numericality: {only_integer: true}
   validates :image, presence: true
 
 
